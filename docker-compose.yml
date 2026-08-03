@@ -1,0 +1,23 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+    container_name: retro-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+
+  frontend:
+    build: 
+      context: ./frontend
+    container_name: retro-frontend
+    ports:
+      - "8080:80" # Mapeamos el puerto 80 del contenedor al 8080 de tu máquina
+    depends_on:
+      - backend
+    restart: unless-stopped
