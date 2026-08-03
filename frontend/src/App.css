@@ -1,184 +1,330 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* frontend/src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+:root {
+  /* El color beige/crema exacto del fondo de tu imagen */
+  --retro-bg: #e5dcc3; 
+  --text-main: #1a1a1a;
+  --window-bg: #d4d0c8;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#center {
+body {
+  background-color: var(--retro-bg);
+  color: var(--text-main);
+  /* Aplicamos la fuente pixelada a todo el documento */
+  font-family: 'VT323', monospace; 
+  font-size: 1.2rem;
+  overflow-x: hidden;
+  /* Opcional: Un ligero patrón de ruido para simular textura antigua */
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+}
+
+/* Forzar que el div principal de React ocupe toda la pantalla */
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* Quitamos el centrado por defecto de Vite */
+}
+
+.portfolio-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
+  min-height: calc(100vh - 20px);
   position: relative;
+  margin: 10px;
+  overflow: hidden; 
+}
+
+/* --- PASO 2: TOP BAR --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
   width: 100%;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.logo-icon {
+  font-size: 2rem;
+}
+
+.logo-text {
+  font-size: 2.5rem;
+  color: #2b4c3b; /* El verde oscuro de tu imagen */
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 15px;
+}
+
+/* El clásico botón retro */
+.btn-retro {
+  background-color: #d6cfb8; /* Tono ligeramente distinto al fondo para que resalte */
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #8a8575;
+  border-bottom: 2px solid #8a8575;
+  padding: 6px 16px;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.1); /* Pequeña sombra para separar del fondo */
+}
+
+/* Efecto de "hundido" al hacer clic */
+.btn-retro:active {
+  border-top: 2px solid #8a8575;
+  border-left: 2px solid #8a8575;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  box-shadow: none;
+  transform: translate(1px, 1px); /* Mueve el botón ligeramente */
+}
+
+/* --- PASO 3: CONTENIDO CENTRAL --- */
+.main-content {
+  display: flex;
+  padding: 0 50px;
+  margin-top: 40px;
+  flex-grow: 1; /* Permite que tome el espacio disponible */
+  position: relative;
+}
+
+.left-decorations {
+  width: 150px; /* Espacio reservado para la enredadera floral */
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Marco de la foto simulando píxeles gruesos */
+.photo-frame {
+  width: 120px;
+  height: 120px;
+  background-color: #2b4c3b; /* Color de fondo mientras pones tu foto real */
+  border: 6px solid #1a1a1a;
+  margin-bottom: 20px;
+  /* Un pequeño truco para hacer que las esquinas parezcan pixeladas */
+  box-shadow: 
+    -6px -6px 0 -6px var(--retro-bg),
+    6px -6px 0 -6px var(--retro-bg),
+    -6px 6px 0 -6px var(--retro-bg),
+    6px 6px 0 -6px var(--retro-bg);
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #a3a3a3;
+}
+
+/* Tipografía de los títulos */
+.main-title {
+  font-size: 5rem;
+  color: #1a1a1a;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin-bottom: 5px;
+}
+
+.sub-title {
+  font-size: 2.2rem;
+  color: #2b4c3b; /* El verde oscuro */
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #222;
+  margin-bottom: 35px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* El botón primario verde (Ver proyectos) */
+.btn-primary {
+  background-color: #1e3a2b; /* Verde más oscuro */
+  color: #e5dcc3; /* Letra color crema */
+  /* Bordes invertidos para darle relieve con este color oscuro */
+  border-top: 2px solid #3c6e54;
+  border-left: 2px solid #3c6e54;
+  border-right: 2px solid #0a140f;
+  border-bottom: 2px solid #0a140f;
+}
+
+.btn-primary:active {
+  border-top: 2px solid #0a140f;
+  border-left: 2px solid #0a140f;
+  border-right: 2px solid #3c6e54;
+  border-bottom: 2px solid #3c6e54;
+}
+
+/* --- ESTILOS CLÁSICOS DE VENTANA (Windows 98) --- */
+.window {
+  background-color: var(--window-bg);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  /* Sombra interior para dar relieve */
+  box-shadow: inset -1px -1px #808080, inset 1px 1px #ffffff;
+}
+
+.title-bar {
+  background-color: #000080; /* Azul clásico */
+  color: white;
+  padding: 3px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Letra más limpia para la barra */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.title-bar-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.title-bar-controls button {
+  background-color: var(--window-bg);
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.title-bar-controls button:active {
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+/* --- PASO 4: ESCRITORIO Y VENTANAS (Lado Derecho) --- */
+
+.desk-section {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  /* Permite que el usuario pueda hacer clic en el texto central a través del contenedor vacío */
+  pointer-events: none; 
+}
+
+/* Base para todas las ventanas flotantes de este lado */
+.window-avion, .window-notas {
+  position: absolute;
+  pointer-events: auto; /* Reactivamos los clics para las ventanas */
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.window-avion {
+  width: 320px;
+  top: 15%;
+  left: 5%;
+  z-index: 1 !important;
+}
+
+.window-notas {
+  width: 280px;
+  top: 10%;
+  right: 15%;
+  z-index: 1 !important;
+}
+
+/* Cuerpos internos de las ventanas */
+.image-body {
+  padding: 0;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #87ceeb; /* Fondo temporal para la imagen */
+  border-bottom: 2px solid var(--win-border-darkest);
+}
+
+.text-body {
+  padding: 12px;
+  background-color: #ffffe1; /* El clásico amarillo del Bloc de Notas */
+  color: #000;
+}
+
+.bold-text {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.todo-list {
+  list-style: none;
+  line-height: 1.6;
+}
+
+/* La mesa y Memo (Consolidado: Sin borde y en primera capa) */
+.desk-assets {
+  position: absolute;
+  bottom: 0px; 
+  right: 0px; 
+  width: 1800px; 
+  
+  /* Lo pasamos al frente de las ventanas (las ventanas tienen z-index 1) */
+  z-index: 100 !important; 
+  
+  /* CLAVE: Permite que el mouse "atraviese" las zonas transparentes 
+     de la imagen para que puedas seguir arrastrando las ventanas */
+  pointer-events: none; 
+  
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/* Hace que la imagen de la mesa/Memo escale correctamente dentro de los 1800px */
+.desk-assets img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom right;
 }
