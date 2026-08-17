@@ -1,9 +1,8 @@
-/* frontend/src/App.css */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&family=VT323&display=swap');
 
 :root {
-  /* El color beige/crema exacto del fondo de tu imagen */
-  --retro-bg: #e5dcc3; 
+  /* Amarillo cálido / pergamino antiguo, intensidad reducida */
+  --retro-bg: #e2cd9d;
   --text-main: #1a1a1a;
   --window-bg: #d4d0c8;
 }
@@ -18,11 +17,16 @@ body {
   background-color: var(--retro-bg);
   color: var(--text-main);
   /* Aplicamos la fuente pixelada a todo el documento */
-  font-family: 'VT323', monospace; 
+  font-family: 'VT323', monospace;
   font-size: 1.2rem;
   overflow-x: hidden;
-  /* Opcional: Un ligero patrón de ruido para simular textura antigua */
-  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+
+  /* Textura de cuadrícula retro (Scanlines/Dither) */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 4px 4px;
+  /* Tamaño de los cuadritos de la textura */
 }
 
 /* Forzar que el div principal de React ocupe toda la pantalla */
@@ -31,25 +35,89 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  text-align: left; /* Quitamos el centrado por defecto de Vite */
+  text-align: left;
 }
 
 .portfolio-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 20px);
+  min-height: 100vh;
   position: relative;
-  margin: 10px;
-  overflow: hidden; 
+  margin: 0px;
+  overflow: hidden;
 }
 
-/* --- PASO 2: TOP BAR --- */
+/* --- BARRA DE TÍTULO PRINCIPAL (Windows) --- */
+.main-window-titlebar {
+  background-color: #00665c;
+  /* Verde oscuro estilo Win98 activo */
+  height: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 4px;
+}
+
+.titlebar-right {
+  display: flex;
+  gap: 2px;
+}
+
+.titlebar-right button {
+  background-color: var(--window-bg);
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  width: 16px;
+  height: 14px;
+  font-size: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.titlebar-right button:active {
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+/* --- ICONOS (antes inline en el JSX) --- */
+.icon-titlebar-logo {
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  image-rendering: pixelated;
+}
+
+.icon-portfolio {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+}
+
+.icon-nav {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+}
+
+/* --- TOP BAR (Navegación) --- */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 10px 30px;
   width: 100%;
+  /* Línea divisoria retro (Groove) que separa el menú del resto */
+  border-bottom: 2px solid #8a8575;
+  box-shadow: 0 1px 0 #ffffff;
+  background-color: transparent;
 }
 
 .logo-section {
@@ -58,111 +126,165 @@ body {
   gap: 15px;
 }
 
-.logo-icon {
-  font-size: 2rem;
+.logo-text {
+  font-family: 'Silkscreen', cursive;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: #3a6b52;
+  font-weight: bold;
+  letter-spacing: 0px;
 }
 
-.logo-text {
-  font-size: 2.5rem;
-  color: #2b4c3b; /* El verde oscuro de tu imagen */
-  font-weight: bold;
-  letter-spacing: 2px;
+.logo-exe {
+  color: #8b2a2a;
 }
 
 .nav-menu {
   display: flex;
-  gap: 15px;
+  gap: 5px;
 }
 
-/* El clásico botón retro */
+/* Botones Retro: Base */
 .btn-retro {
-  background-color: #d6cfb8; /* Tono ligeramente distinto al fondo para que resalte */
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #8a8575;
-  border-bottom: 2px solid #8a8575;
-  padding: 6px 16px;
   font-family: 'VT323', monospace;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--text-main);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 2px 2px 0px rgba(0,0,0,0.1); /* Pequeña sombra para separar del fondo */
+  padding: 4px 12px;
+  background-color: transparent;
+  border: 2px solid transparent;
 }
 
-/* Efecto de "hundido" al hacer clic */
+/* Botón Activo (Inicio) */
+.btn-active {
+  background-color: #d6cfb8;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #8a8575;
+  border-bottom: 2px solid #8a8575;
+}
+
+/* Botones Planos (Hover interactivo) */
+.btn-flat {
+  background-color: transparent;
+}
+
+.btn-flat:hover {
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #8a8575;
+  border-bottom: 2px solid #8a8575;
+}
+
 .btn-retro:active {
   border-top: 2px solid #8a8575;
   border-left: 2px solid #8a8575;
   border-right: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
-  box-shadow: none;
-  transform: translate(1px, 1px); /* Mueve el botón ligeramente */
+  background-color: #d6cfb8;
 }
 
-/* --- PASO 3: CONTENIDO CENTRAL --- */
+/* Foco visible para navegación por teclado */
+.btn-retro:focus-visible,
+.titlebar-right button:focus-visible,
+.title-bar-controls button:focus-visible {
+  outline: 2px solid #000080;
+  outline-offset: 2px;
+}
+
+/* --- CONTENIDO CENTRAL --- */
 .main-content {
   display: flex;
   padding: 0 50px;
   margin-top: 40px;
-  flex-grow: 1; /* Permite que tome el espacio disponible */
+  flex-grow: 1;
   position: relative;
 }
 
 .left-decorations {
-  width: 150px; /* Espacio reservado para la enredadera floral */
+  width: 150px;
 }
 
 .profile-section {
   display: flex;
   flex-direction: column;
-  max-width: 650px;
+  max-width: 800px;
   align-items: flex-start;
   text-align: left;
 }
 
-/* Marco de la foto simulando píxeles gruesos */
+/* Marco de la foto con estilo 8-bits */
 .photo-frame {
-  width: 120px;
-  height: 120px;
-  background-color: #2b4c3b; /* Color de fondo mientras pones tu foto real */
-  border: 6px solid #1a1a1a;
-  margin-bottom: 20px;
-  /* Un pequeño truco para hacer que las esquinas parezcan pixeladas */
-  box-shadow: 
-    -6px -6px 0 -6px var(--retro-bg),
-    6px -6px 0 -6px var(--retro-bg),
-    -6px 6px 0 -6px var(--retro-bg),
-    6px 6px 0 -6px var(--retro-bg);
+  width: 200px;
+  height: 200px;
+  align-self: center;
+  margin-bottom: 30px;
+
+  /* 1. Usamos el fondo negro oscuro para que actúe como el borde grueso */
+  background-color: #1a1a1a;
+  padding: 6px;
+  /* Este padding es el grosor del marco negro */
+
+  /* 2. Recortamos las esquinas exteriores para el look 8-bits */
+  clip-path: polygon(6px 0, calc(100% - 6px) 0,
+      calc(100% - 6px) 6px, 100% 6px,
+      100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+      calc(100% - 6px) 100%, 6px 100%,
+      6px calc(100% - 6px), 0 calc(100% - 6px),
+      0 6px, 6px 6px);
 }
 
-.photo-placeholder {
+/* Ajustamos la foto interior */
+.photo-frame img {
   width: 100%;
   height: 100%;
-  background-color: #a3a3a3;
+  object-fit: cover;
+
+  /* 3. El fondo de la imagen se rellena con el beige de la página */
+  background-color: var(--retro-bg);
+
+  /* 4. Recortamos también la imagen interior para que siga el patrón pixelado */
+  clip-path: polygon(6px 0, calc(100% - 6px) 0,
+      calc(100% - 6px) 6px, 100% 6px,
+      100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+      calc(100% - 6px) 100%, 6px 100%,
+      6px calc(100% - 6px), 0 calc(100% - 6px),
+      0 6px, 6px 6px);
 }
 
-/* Tipografía de los títulos */
 .main-title {
-  font-size: 5rem;
+  font-size: clamp(2.6rem, 7vw, 6.5rem);
   color: #1a1a1a;
   line-height: 0.9;
   letter-spacing: -2px;
   margin-bottom: 5px;
+  text-align: center;
+  width: 100%;
 }
 
 .sub-title {
-  font-size: 2.2rem;
-  color: #2b4c3b; /* El verde oscuro */
-  margin-bottom: 25px;
+  font-size: clamp(1.3rem, 3.5vw, 2.8rem);
+  color: #3a6b52;
+  margin-bottom: 15px;
   letter-spacing: -1px;
+  text-align: center;
+  width: 100%;
+}
+
+/* --- Línea divisoria estilo 8-bits --- */
+.pixel-divider {
+  border: none;
+  border-top: 4px dashed #8a8575;
+  width: 100%;
+  margin: 15px 0 25px 0;
+  background: transparent;
 }
 
 .intro-text {
-  font-size: 1.2rem;
-  line-height: 1.5;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  line-height: 1.6;
   color: #222;
   margin-bottom: 35px;
 }
@@ -172,13 +294,20 @@ body {
   gap: 15px;
 }
 
-/* El botón primario verde (Ver proyectos) */
+/* Hacemos TODOS los botones de esta sección más grandes y anchos */
+.action-buttons .btn-retro {
+  font-size: 1.5rem;
+  /* Letra más grande (antes 1.3rem) */
+  padding: 8px 24px;
+  /* Botón más gordito y ancho */
+  margin-left: 45px;
+}
+
 .btn-primary {
-  background-color: #1e3a2b; /* Verde más oscuro */
-  color: #e5dcc3; /* Letra color crema */
-  /* Bordes invertidos para darle relieve con este color oscuro */
-  border-top: 2px solid #3c6e54;
-  border-left: 2px solid #3c6e54;
+  background-color: #2c5a44;
+  color: #e5dcc3;
+  border-top: 2px solid #4a8766;
+  border-left: 2px solid #4a8766;
   border-right: 2px solid #0a140f;
   border-bottom: 2px solid #0a140f;
 }
@@ -186,31 +315,62 @@ body {
 .btn-primary:active {
   border-top: 2px solid #0a140f;
   border-left: 2px solid #0a140f;
-  border-right: 2px solid #3c6e54;
-  border-bottom: 2px solid #3c6e54;
+  border-right: 2px solid #4a8766;
+  border-bottom: 2px solid #4a8766;
 }
 
-/* --- ESTILOS CLÁSICOS DE VENTANA (Windows 98) --- */
+/* --- NUEVO: Botones Secundarios (Contactar y CV) --- */
+.btn-secondary {
+  background-color: var(--window-bg);
+  /* Fondo gris clásico de Windows */
+  color: var(--text-main);
+  /* Contorno 3D visible siempre */
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #8a8575;
+  border-bottom: 2px solid #8a8575;
+}
+
+.btn-secondary:hover {
+  background-color: #e2dfd6;
+  /* Brilla un poco al pasar el ratón */
+}
+
+.btn-secondary:active {
+  /* Se hunde al hacer clic */
+  border-top: 2px solid #8a8575;
+  border-left: 2px solid #8a8575;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  background-color: var(--window-bg);
+}
+
+/* --- ESTILOS CLÁSICOS DE VENTANA Y SCROLLBAR --- */
 .window {
   background-color: var(--window-bg);
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff;
   border-right: 2px solid #000000;
   border-bottom: 2px solid #000000;
-  /* Sombra interior para dar relieve */
-  box-shadow: inset -1px -1px #808080, inset 1px 1px #ffffff;
+  box-shadow: inset -1px -1px #808080, inset 1px 1px #ffffff, 2px 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 2px;
 }
 
 .title-bar {
-  background-color: #000080; /* Azul clásico */
+  background-color: #000080;
   color: white;
   padding: 3px 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Letra más limpia para la barra */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.9rem;
   font-weight: bold;
+  cursor: grab;
+}
+
+.title-bar:active {
+  cursor: grabbing;
 }
 
 .title-bar-controls {
@@ -242,54 +402,187 @@ body {
   border-bottom: 1px solid #ffffff;
 }
 
-/* --- PASO 4: ESCRITORIO Y VENTANAS (Lado Derecho) --- */
+.menu-bar {
+  display: flex;
+  gap: 15px;
+  padding: 2px 6px;
+  background-color: var(--window-bg);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.85rem;
+  color: #000;
+  margin-bottom: 2px;
+}
 
-.desk-section {
+.menu-bar span {
+  cursor: pointer;
+}
+
+.window-body {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  background-color: #ffffff;
+}
+
+/* --- BARRAS DE DESPLAZAMIENTO FICTICIAS (100% VISIBLES SIEMPRE) --- */
+.fake-window-body {
+  position: relative;
+  background-color: #ffffff;
+  padding: 0;
+  height: 200px;
+  overflow: hidden;
+}
+
+.fake-window-body.notas-body {
+  height: 160px;
+  /* La ventana de notas es un poco más corta */
+}
+
+/* El contenido (imagen o texto) recortado para dejar espacio a las barras */
+.fake-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  overflow: hidden;
+}
+
+.fake-content.image-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Asegura que la imagen llene el espacio sin deformarse */
+}
+
+.fake-content.text-content {
+  padding: 8px 12px;
+  color: #000;
+  height: 100%;
+  /* La de notas ocupa toda la altura porque no tiene barra abajo */
+}
+
+/* --- TRACK VERTICAL --- */
+.fake-scrollbar-vertical {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 16px;
+  height: calc(100% - 16px);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--window-bg);
+  border-left: 1px solid #dfdfdf;
+}
+
+.fake-scrollbar-vertical.full-height {
+  height: 100%;
+  /* Para la ventana de notas que no tiene barra inferior */
+}
+
+/* --- TRACK HORIZONTAL --- */
+.fake-scrollbar-horizontal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 16px;
+  width: calc(100% - 16px);
+  display: flex;
+  background-color: var(--window-bg);
+  border-top: 1px solid #dfdfdf;
+}
+
+/* Esquina vacía donde se cruzan las dos barras */
+.fake-scroll-corner {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 50%;
-  height: 100%;
-  /* Permite que el usuario pueda hacer clic en el texto central a través del contenedor vacío */
-  pointer-events: none; 
+  width: 16px;
+  height: 16px;
+  background-color: var(--window-bg);
+  border-top: 1px solid #dfdfdf;
+  border-left: 1px solid #dfdfdf;
 }
 
-/* Base para todas las ventanas flotantes de este lado */
-.window-avion, .window-notas {
+/* --- BOTONES Y CUADRITOS (THUMBS) --- */
+.scroll-btn,
+.scroll-thumb-v,
+.scroll-thumb-h {
+  background-color: var(--window-bg);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+
+.scroll-btn {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.scroll-btn:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Pistas grises punteadas (Dither) */
+.scroll-track-v,
+.scroll-track-h {
+  flex-grow: 1;
+  background-color: #ffffff;
+  background-image:
+    repeating-linear-gradient(45deg, #dfdfdf 25%, transparent 25%, transparent 75%, #dfdfdf 75%, #dfdfdf),
+    repeating-linear-gradient(45deg, #dfdfdf 25%, transparent 25%, transparent 75%, #dfdfdf 75%, #dfdfdf);
+  background-position: 0 0, 2px 2px;
+  background-size: 4px 4px;
+  position: relative;
+}
+
+/* Cuadritos que se "deslizan" */
+.scroll-thumb-v {
   position: absolute;
-  pointer-events: auto; /* Reactivamos los clics para las ventanas */
-  box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+  width: 100%;
+  height: 35px;
+  top: 30%;
+  /* Posición fija simulada */
 }
 
-.window-avion {
-  width: 320px;
-  top: 15%;
-  left: 5%;
-  z-index: 1 !important;
+.scroll-thumb-h {
+  position: absolute;
+  height: 100%;
+  width: 35px;
+  left: 20%;
+  /* Posición fija simulada */
 }
 
-.window-notas {
-  width: 280px;
-  top: 10%;
-  right: 15%;
-  z-index: 1 !important;
+/* --- DIBUJO DE FLECHITAS (Pixel Art en SVG) --- */
+.btn-up {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M4 10 L8 5 L12 10 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Cuerpos internos de las ventanas */
-.image-body {
-  padding: 0;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #87ceeb; /* Fondo temporal para la imagen */
-  border-bottom: 2px solid var(--win-border-darkest);
+.btn-down {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M4 6 L8 11 L12 6 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.text-body {
-  padding: 12px;
-  background-color: #ffffe1; /* El clásico amarillo del Bloc de Notas */
-  color: #000;
+.btn-left {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M10 4 L5 8 L10 12 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-right {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M6 4 L11 8 L6 12 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .bold-text {
@@ -302,29 +595,251 @@ body {
   line-height: 1.6;
 }
 
-/* La mesa y Memo (Consolidado: Sin borde y en primera capa) */
+/* --- ESCRITORIO Y ZONAS --- */
+.desk-section {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.window-avion,
+.window-notas {
+  position: absolute;
+  pointer-events: auto;
+  /* Deben quedar por encima del fondo del escritorio (.desk-assets) */
+  z-index: 10;
+}
+
+.window-avion {
+  width: 320px;
+  top: 15%;
+  left: 5%;
+}
+
+.window-notas {
+  width: 280px;
+  top: 10%;
+  right: 15%;
+}
+
 .desk-assets {
   position: absolute;
-  bottom: 0px; 
-  right: 0px; 
-  width: 1800px; 
-  
-  /* Lo pasamos al frente de las ventanas (las ventanas tienen z-index 1) */
-  z-index: 100 !important; 
-  
-  /* CLAVE: Permite que el mouse "atraviese" las zonas transparentes 
-     de la imagen para que puedas seguir arrastrando las ventanas */
-  pointer-events: none; 
-  
+  bottom: -10px;
+  /* Elimina el vacío inferior */
+  right: 0px;
+  width: 1800px;
+  z-index: 1;
+  pointer-events: none;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
 }
 
-/* Hace que la imagen de la mesa/Memo escale correctamente dentro de los 1800px */
 .desk-assets img {
-  width: 100%;
+  width: 60%;
   height: auto;
   object-fit: contain;
   object-position: bottom right;
+}
+
+/* --- DECORACIÓN DE LA PLANTA --- */
+.plant-decoration {
+  position: absolute;
+  left: -100px;
+  bottom: -10px;
+  /* Para que baje hasta el nivel de la mesa */
+  height: 85vh;
+  /* Ajusta este valor (ej. 70vh o 90vh) dependiendo de qué tan alta sea tu imagen */
+  width: auto;
+  z-index: 50;
+  /* Queda por encima del fondo, pero sin estorbar las ventanas */
+  pointer-events: none;
+  /* IMPORTANTE: Evita que la imagen bloquee los clics del ratón */
+  image-rendering: pixelated;
+  /* Mantiene los bordes duros de 8-bits */
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1300px) {
+  .desk-section {
+    transform: scale(0.8);
+    transform-origin: bottom right;
+  }
+}
+
+@media (max-width: 1100px) {
+  .desk-section {
+    transform: scale(0.6);
+  }
+
+  .main-content {
+    padding: 0 30px;
+  }
+
+  .left-decorations {
+    width: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 15px;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .left-decorations {
+    display: none;
+  }
+
+  .desk-section {
+    display: none;
+  }
+
+  .plant-decoration {
+    display: none;
+  }
+
+  .profile-section {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .photo-frame {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* --- ANIMACIÓN DE TERMINAL INTRODUCCIÓN --- */
+.terminal-desktop-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #008080;
+  /* El icónico fondo verde-azulado "Teal" de Win 95/98 */
+  z-index: 9999;
+  /* Por encima de TODO */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 950px;
+  height: 65vh;
+  /* Ocupa buena parte de la pantalla, pero deja ver el fondo */
+  display: flex;
+  flex-direction: column;
+}
+
+.term-body {
+  background-color: #1a1b1a;
+  /* Fondo negro */
+  flex-grow: 1;
+  padding: 20px;
+  overflow: hidden;
+  font-family: 'Consolas', 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  /* El borde 3D hundido ya lo trae la clase .window-body */
+}
+
+.term-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.term-line {
+  margin-bottom: 6px;
+  width: fit-content;
+}
+
+/* Colores copiados de tu video */
+.term-cmd {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+
+.term-success {
+  color: #4ade80;
+}
+
+/* Verde para los check ✓ */
+.term-info {
+  color: #facc15;
+}
+
+/* Amarillo para el link local ▶ */
+
+/* Efecto máquina de escribir para los comandos */
+.term-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 0.8s steps(30, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* Cursor parpadeante */
+.term-cursor {
+  color: #f8f8f2;
+  margin-top: -3px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* --- ANIMACIÓN PARA CUANDO APARECE EL PORTAFOLIO --- */
+.fade-in-portfolio {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
