@@ -1,237 +1,142 @@
 import React, { useState, useEffect } from 'react';
-import Draggable from 'react-draggable';
 import './App.css';
 
+// Componentes
+import BootSequence from './components/Terminal/BootSequence';
+import TopBar from './components/Navigation/TopBar';
+import HeroProfile from './components/Sections/HeroProfile';
+import ProjectsExplorer from './components/Sections/ProjectsExplorer';
+import DesktopEnvironment from './components/Sections/DesktopEnvironment';
+
 function App() {
-  // --- LÓGICA DE LA TERMINAL DE INTRODUCCIÓN ---
-  const [isIntroActive, setIsIntroActive] = useState(true);
-  const [step, setStep] = useState(0);
+  // --- ESTADOS DE LA ANIMACIÓN ---
+  const [hasStarted, setHasStarted] = useState(false);     // Enciende la pantalla
+  const [step, setStep] = useState(-1);                    // Controla los comandos de la terminal
+  const [isExpanding, setIsExpanding] = useState(false);   // Dispara el crecimiento del monitor
+  const [showPortfolio, setShowPortfolio] = useState(false); // Cambia la terminal por la web
+
+  // --- ESTADOS DE LA SECCIÓN DE PROYECTOS ---
+  const [activeFilter, setActiveFilter] = useState('Todos');
+
+  // Tu lista de proyectos con información enriquecida
+  const projectsData = [
+    { 
+      id: 1, name: 'Inventory_360.exe', category: 'Web', icon: '⚙️',
+      title: 'Inventory 360', type: 'SaaS',
+      desc: 'Plataforma SaaS de gestión de inventario con Node.js y React. Desplegada en Docker con Cloudflare Tunnels.',
+      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=App+Preview'
+    },
+    { 
+      id: 2, name: 'Lira_AILA.exe', category: 'Backend', icon: '🤖',
+      title: 'Lira AI Assistant', type: 'Backend',
+      desc: 'Asistente de IA asíncrono construido con Node.js, la API de Google Gemini y bases de datos MongoDB.',
+      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=Terminal' 
+    },
+    { 
+      id: 3, name: 'UHC_NOVA.exe', category: 'Web', icon: '🎮',
+      title: 'UHC Nova', type: 'Full-Stack',
+      desc: 'Plataforma Full-Stack para la gestión de torneos de e-sports y eventos interactivos de Minecraft.',
+      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=UHC+App' 
+    },
+    { 
+      id: 4, name: 'Monitor_Agua.apk', category: 'Mobile', icon: '📱',
+      title: 'Monitor Smart', type: 'Móvil',
+      desc: 'Sistema inteligente de monitoreo de consumo de agua propuesto para el Hackathon Querétaro Digital 2024.',
+      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=Mobile+App' 
+    },
+    { 
+      id: 5, name: 'Hackathons', category: 'Otros', icon: '📁',
+      title: 'Hackathons', type: 'Eventos',
+      desc: 'Proyectos ganadores como el software MES (2do Lugar CANACINTRA 2025) y propuestas EII 2024.',
+      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=Logros' 
+    },
+  ];
+
+  // --- FUNCIONES ---
+  // Botón físico del monitor
+  const handlePowerOn = () => {
+    if (hasStarted) return;
+    setHasStarted(true);
+  };
 
   useEffect(() => {
-    // Cambia a false si quieres saltarte la intro mientras programas
-    if (!isIntroActive) return;
+    // Si la PC no se ha encendido, o si ya cargó el portafolio, no hacemos nada
+    if (!hasStarted || showPortfolio) return;
 
     const timers = [
-      setTimeout(() => setStep(1), 600),   // Auth exitosa
-      setTimeout(() => setStep(2), 1200),  // Comando de pull y build
-      setTimeout(() => setStep(3), 2000),  // Resultado del git pull
-      setTimeout(() => setStep(4), 2600),  // Docker build init
-      setTimeout(() => setStep(5), 3000),  // Container db
-      setTimeout(() => setStep(6), 3400),  // Container api
-      setTimeout(() => setStep(7), 3800),  // Container client
-      setTimeout(() => setStep(8), 5000),  // Servicio Memo
-      setTimeout(() => setStep(9), 6500),  // Ejecutar PORTFOLIO.EXE
-      setTimeout(() => setIsIntroActive(false), 8000), // Termina la intro
+      setTimeout(() => setStep(0), 800),   // ssh ...
+      setTimeout(() => setStep(1), 1600),  // Auth exitosa
+      setTimeout(() => setStep(2), 2500),  // git pull ...
+      setTimeout(() => setStep(3), 3200),  // Fetching...
+      setTimeout(() => setStep(4), 3800),  // Running 3/3
+      setTimeout(() => setStep(5), 4500),  // Container db
+      setTimeout(() => setStep(6), 5000),  // Container api
+      setTimeout(() => setStep(7), 5500),  // Container client
+      setTimeout(() => setStep(8), 6800),  // systemd Memo
+      setTimeout(() => setStep(9), 8500),  // Comando PORTFOLIO.EXE
+
+      // EL MOMENTO GLORIOSO: Suena el audio y el monitor empieza a crecer
+      setTimeout(() => {
+        const bootSound = new Audio('/startup.mp3');
+        bootSound.play().catch(e => console.log("El navegador bloqueó el audio:", e));
+        setIsExpanding(true);
+      }, 9800),
+
+      // 1 segundo después (cuando la expansión casi termina), mostramos la web
+      setTimeout(() => setShowPortfolio(true), 10800),
     ];
 
     return () => timers.forEach(clearTimeout);
-  }, [isIntroActive]);
+  }, [hasStarted, showPortfolio]);
 
-  // Función para mover la vista hacia las secciones (cuando agregues más contenido abajo)
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <>
-      {/* --- PANTALLA DE CARGA (TERMINAL) --- */}
-      {isIntroActive && (
-        <div className="terminal-desktop-bg">
-          <div className="window terminal-window">
+    <div className="desktop-environment">
 
-            {/* Barra de título de la terminal */}
-            <div className="title-bar">
-              <div className="title-bar-text">C:\WINDOWS\system32\cmd.exe - ssh</div>
-              <div className="title-bar-controls">
-                <button aria-label="Minimize">_</button>
-                <button aria-label="Maximize">□</button>
-                <button aria-label="Close" style={{ fontWeight: 'bold' }}>X</button>
-              </div>
+      {/* El contenedor del monitor, que pasará a fullscreen si isExpanding es true */}
+      <div className={`retro-monitor-bezel ${isExpanding ? 'monitor-fullscreen' : ''}`}>
+
+        {/* Pantalla (Cristal) */}
+        <div className="retro-monitor-screen">
+
+          {/* FASE 1: Apagado */}
+          {!hasStarted ? (
+            <div className="screen-off"></div>
+
+            /* FASE 2: Encendido, mostrando la terminal */
+          ) : !showPortfolio ? (
+            <BootSequence step={step} />
+
+            /* FASE 3: El Portafolio Real */
+          ) : (
+            <div className="portfolio-wrapper fade-in-portfolio">
+              <TopBar scrollToSection={scrollToSection} />
+              <HeroProfile scrollToSection={scrollToSection} />
+              <ProjectsExplorer
+                activeFilter={activeFilter}
+                setActiveFilter={setActiveFilter}
+                projectsData={projectsData}
+              />
+              <DesktopEnvironment />
             </div>
+          )}
+        </div>
 
-            {/* Cuerpo negro de la terminal */}
-            <div className="window-body term-body">
-              <div className="term-content">
-                {step >= 0 && <div className="term-line term-cmd term-typing">$ ssh -i ~/.ssh/id_ed25519 luis@portfolio-prod</div>}
-
-                {step >= 1 && <div className="term-line term-success">[ OK ] Autenticación exitosa. Welcome to Debian GNU/Linux 12 (bookworm).</div>}
-
-                {step >= 2 && <><br /><div className="term-line term-cmd term-typing">luis@prod:~/app$ git pull origin main && docker compose up -d</div></>}
-
-                {step >= 3 && <div className="term-line term-info">Fetching origin... Fast-forward (1 commit).</div>}
-                {step >= 4 && <div className="term-line term-info">[+] Running 3/3</div>}
-
-                {step >= 5 && <div className="term-line term-success"> ✔ Container mongo_db_prod         Started</div>}
-                {step >= 6 && <div className="term-line term-success"> ✔ Container node_api_prod         Started</div>}
-                {step >= 7 && <div className="term-line term-success"> ✔ Container react_client_prod     Started</div>}
-
-                {step >= 8 && <><br /><div className="term-line term-info">[systemd] Starting Memo Assistant Daemon (memo.service)... 🐈 OK</div></>}
-
-                {step >= 9 && <><br /><div className="term-line term-cmd term-typing">luis@prod:~/app$ ./PORTFOLIO.EXE --mode=production</div></>}
-
-                {/* Cursor parpadeante */}
-                <div className="term-cursor">█</div>
-              </div>
-            </div>
-
+        {/* Base del monitor (Botones y Logo) */}
+        <div className="monitor-chin">
+          <div className="monitor-logo">CATVISION</div>
+          <div className="monitor-controls">
+            <div className={`power-led ${hasStarted ? 'led-on' : ''}`}></div>
+            <button className="power-btn-physical" onClick={handlePowerOn}>⏻</button>
           </div>
         </div>
-      )}
 
-      {/* --- EL PORTAFOLIO REAL --- */}
-      {/* Solo lo mostramos cuando la terminal haya terminado */}
-      {!isIntroActive && (
-        <div className="portfolio-wrapper fade-in-portfolio">
-
-          <div className="main-window-titlebar">
-            <div className="titlebar-left">
-              <img src="/icons/logo.png" alt="Windows Logo" className="icon-titlebar-logo" />
-            </div>
-            <div className="titlebar-right">
-              <button aria-label="Minimize">_</button>
-              <button aria-label="Maximize">□</button>
-              <button aria-label="Close" style={{ fontWeight: 'bold' }}>X</button>
-            </div>
-          </div>
-
-          <header className="top-bar">
-            <div className="logo-section">
-              <img src="/icons/portafolio.png" alt="Portfolio Icon" className="icon-portfolio" />
-              <span className="logo-text">PORTFOLIO<span className="logo-exe">.EXE</span></span>
-            </div>
-
-            <nav className="nav-menu">
-              <button className="btn-retro btn-active" onClick={() => scrollToSection('inicio')}>
-                <img src="/icons/inicio.png" alt="Inicio" className="icon-nav" /> Inicio
-              </button>
-              <button className="btn-retro btn-flat" onClick={() => scrollToSection('proyectos')}>
-                <img src="/icons/proyectos.png" alt="Proyectos" className="icon-nav" /> Proyectos
-              </button>
-              <button className="btn-retro btn-flat" onClick={() => scrollToSection('tecnologias')}>
-                <img src="/icons/tecnologias.png" alt="Tecnologías" className="icon-nav" /> Tecnologías
-              </button>
-              <button className="btn-retro btn-flat" onClick={() => scrollToSection('sobre-mi')}>
-                <img src="/icons/sobre-mi.png" alt="Sobre mí" className="icon-nav" /> Sobre mí
-              </button>
-              <button className="btn-retro btn-flat" onClick={() => scrollToSection('contacto')}>
-                <img src="/icons/contacto.png" alt="Contacto" className="icon-nav" /> Contacto
-              </button>
-            </nav>
-          </header>
-
-          <main className="main-content" id="inicio">
-            <img src="/planta.png" alt="Enredadera retro" className="plant-decoration" />
-            <div className="left-decorations"></div>
-
-            <div className="profile-section">
-              <div className="photo-frame">
-                <img src="/perfil.png" alt="Perfil" />
-              </div>
-
-              <div className="text-section">
-                <h1 className="main-title">Hola, Soy Luis</h1>
-                <h2 className="sub-title">Ingeniero en Desarrollo y Gestion de Software</h2>
-
-                <hr className="pixel-divider" />
-
-                <p className="intro-text">
-                  Desarrollador Full-Stack apasionado por construir soluciones sólidas de<br />
-                  extremo a extremo. Transformo ideas en aplicaciones web y multiplataforma<br />
-                  usando React, Node.js y Flutter. Disfruto diseñar arquitecturas<br />
-                  escalables respaldadas por bases de datos robustas y despliegues con Docker.
-                </p>
-
-                <div className="action-buttons">
-                  <button className="btn-retro btn-primary" onClick={() => scrollToSection('proyectos')}>▶ Ver proyectos</button>
-                  <button className="btn-retro btn-secondary" onClick={() => scrollToSection('contacto')}>✉ Contactar</button>
-                  <button className="btn-retro btn-secondary" onClick={() => window.open('/cv.pdf', '_blank', 'noopener,noreferrer')}>📄 CV</button>
-                </div>
-              </div>
-            </div>
-          </main>
-
-          <aside className="desk-section">
-            <Draggable handle=".title-bar">
-              <div className="window window-avion">
-                <div className="title-bar" style={{ backgroundColor: '#00665c' }}>
-                  <div className="title-bar-text">avion.webp</div>
-                  <div className="title-bar-controls">
-                    <button aria-label="Minimize">_</button>
-                    <button aria-label="Maximize">□</button>
-                    <button aria-label="Close" style={{ fontWeight: 'bold' }}>X</button>
-                  </div>
-                </div>
-                <div className="window-body fake-window-body">
-                  <div className="fake-content image-content">
-                    <img src="/avion.jpg" alt="Avión clásico" />
-                  </div>
-
-                  <div className="fake-scrollbar-vertical">
-                    <button className="scroll-btn btn-up"></button>
-                    <div className="scroll-track-v"><div className="scroll-thumb-v"></div></div>
-                    <button className="scroll-btn btn-down"></button>
-                  </div>
-
-                  <div className="fake-scrollbar-horizontal">
-                    <button className="scroll-btn btn-left"></button>
-                    <div className="scroll-track-h"><div className="scroll-thumb-h"></div></div>
-                    <button className="scroll-btn btn-right"></button>
-                  </div>
-
-                  <div className="fake-scroll-corner"></div>
-                </div>
-              </div>
-            </Draggable>
-
-            <Draggable handle=".title-bar">
-              <div className="window window-notas">
-                <div className="title-bar" style={{ backgroundColor: '#000080' }}>
-                  <div className="title-bar-text">notas.txt - Bloc de notas</div>
-                  <div className="title-bar-controls">
-                    <button aria-label="Minimize">_</button>
-                    <button aria-label="Maximize">□</button>
-                    <button aria-label="Close" style={{ fontWeight: 'bold' }}>X</button>
-                  </div>
-                </div>
-                <div className="menu-bar">
-                  <span><u>A</u>rchivo</span>
-                  <span><u>E</u>dición</span>
-                  <span><u>B</u>úsqueda</span>
-                  <span>A<u>y</u>uda</span>
-                </div>
-
-                <div className="window-body fake-window-body notas-body">
-                  <div className="fake-content text-content">
-                    <p className="bold-text">Pendientes para hoy:</p>
-                    <ul className="todo-list">
-                      <li>- Revisar PRs</li>
-                      <li>- Corregir bugs</li>
-                      <li>- Commit rama &lt;testing&gt;</li>
-                      <li>- Leer documentación</li>
-                      <li>- Desplegar en Vercel</li>
-                      <li>- Alimentar a Memo 🐈</li>
-                      <li>- Comprar café</li>
-                    </ul>
-                  </div>
-
-                  <div className="fake-scrollbar-vertical full-height">
-                    <button className="scroll-btn btn-up"></button>
-                    <div className="scroll-track-v"><div className="scroll-thumb-v" style={{ top: '10%' }}></div></div>
-                    <button className="scroll-btn btn-down"></button>
-                  </div>
-                </div>
-              </div>
-            </Draggable>
-
-            <div className="desk-assets">
-              <img src="/escritorio.png" alt="Escritorio retro" />
-            </div>
-          </aside>
-
-        </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 }
 

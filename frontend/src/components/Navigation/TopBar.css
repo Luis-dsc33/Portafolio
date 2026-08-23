@@ -1,0 +1,76 @@
+/* --- BARRA DE TÍTULO PRINCIPAL (Windows) --- */
+.main-window-titlebar {
+  background-color: #00665c;
+  height: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 4px;
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
+}
+
+/* --- ICONOS --- */
+.icon-titlebar-logo {
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  image-rendering: pixelated;
+}
+
+.icon-portfolio {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+}
+
+.icon-nav {
+  width: 22px;
+  height: 22px;
+  image-rendering: pixelated;
+}
+
+/* --- TOP BAR (Navegación) --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px; 
+  width: 100%;
+  border-bottom: 2px solid #8a8575;
+  box-shadow: 0 1px 0 #ffffff, 0 4px 10px rgba(0,0,0,0.1); 
+  
+  background-color: var(--retro-bg);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 4px 4px;
+
+  position: sticky;
+  top: 28px; 
+  z-index: 999; 
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-text {
+  font-family: 'Silkscreen', cursive;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: #3a6b52;
+  font-weight: bold;
+  letter-spacing: 0px;
+}
+
+.logo-exe {
+  color: #8b2a2a;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 5px;
+}
