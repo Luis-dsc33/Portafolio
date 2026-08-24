@@ -20,7 +20,7 @@ function HeroProfile({ scrollToSection }) {
 
           <div className="text-section">
             <h1 className="main-title">Hola, Soy Luis</h1>
-            <h2 className="sub-title">Ingeniero en Desarrollo y Gestion de Software</h2>
+            <h2 className="sub-title">Pasante de Ingenieria en Desarrollo y Gestion de Software</h2>
             <hr className="pixel-divider" />
             <p className="intro-text">
               Desarrollador Full-Stack apasionado por construir soluciones sólidas de<br />
@@ -41,8 +41,8 @@ function HeroProfile({ scrollToSection }) {
       {/* --- SEPARADOR RETRO --- */}
       <div className="retro-separator-container">
         <hr className="retro-separator" />
-        <span className="separator-text">C:\Archivos_de_programa\Proyectos</span>
-        
+        <span className="separator-text">C:\Usuarios\Luis\Sobre_Mi.txt</span>
+
         {/* --- PLANTA COLGANTE --- */}
         <img src="/Colgante.png" alt="Enredadera colgante" className="hanging-plant" />
       </div>

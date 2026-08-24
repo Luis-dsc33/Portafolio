@@ -31,14 +31,14 @@ function TopBar({ scrollToSection }) {
           <button className="btn-retro btn-active" onClick={() => scrollToSection('inicio')}>
             <img src="/icons/inicio.png" alt="Inicio" className="icon-nav" /> Inicio
           </button>
+          <button className="btn-retro btn-flat" onClick={() => scrollToSection('sobre-mi')}>
+            <img src="/icons/sobre-mi.png" alt="Sobre mí" className="icon-nav" /> Sobre mí
+          </button>
           <button className="btn-retro btn-flat" onClick={() => scrollToSection('proyectos')}>
             <img src="/icons/proyectos.png" alt="Proyectos" className="icon-nav" /> Proyectos
           </button>
           <button className="btn-retro btn-flat" onClick={() => scrollToSection('tecnologias')}>
             <img src="/icons/tecnologias.png" alt="Tecnologías" className="icon-nav" /> Tecnologías
-          </button>
-          <button className="btn-retro btn-flat" onClick={() => scrollToSection('sobre-mi')}>
-            <img src="/icons/sobre-mi.png" alt="Sobre mí" className="icon-nav" /> Sobre mí
           </button>
           <button className="btn-retro btn-flat" onClick={() => scrollToSection('contacto')}>
             <img src="/icons/contacto.png" alt="Contacto" className="icon-nav" /> Contacto
