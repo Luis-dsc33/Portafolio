@@ -17,33 +17,50 @@ const ProjectDetails = ({ projectsData }) => {
         inventory: {
             gallery: [
                 {
-                    src: '/inventory-arch.png',
-                    caption: 'Arquitectura Cliente-Servidor desacoplada con integración de Google Gemini 2.5 Flash.'
+                    src: '/proyects/inv.360/01_login.png',
+                    caption: 'Portal de Autenticación y Seguridad (JWT). Acceso seguro con validación de formularios y roles (RBAC).'
                 },
                 {
-                    src: 'https://via.placeholder.com/800x450/0b1a15/4caf7d?text=Dashboard+y+Analytics',
-                    caption: 'Dashboard Ejecutivo: Monitoreo en tiempo real de KPIs y predicción de demanda a 60 días.'
+                    src: '/proyects/inv.360/02_dashboard_kpis.png',
+                    caption: 'Dashboard Ejecutivo & Predicción de Demanda por IA. Monitoreo en tiempo real de KPIs.'
                 },
                 {
-                    src: 'https://via.placeholder.com/800x450/0b1a15/4caf7d?text=Asistente+Cognitivo+IA',
-                    caption: 'Asistente IA Multimodal: Ejecución de operaciones complejas mediante voz y texto natural.'
+                    src: '/proyects/inv.360/03_inventario_gestion.png',
+                    caption: 'Módulo Maestro de Inventario. CRUD con semáforo logístico y umbrales configurables.'
+                },
+                {
+                    src: '/proyects/inv.360/04_asistente_ia_chatbot.png',
+                    caption: 'Asistente Cognitivo de Inventario. Chatbot IA Multimodal para operaciones de base de datos.'
+                },
+                {
+                    src: '/proyects/inv.360/07_pos_punto_de_venta.png',
+                    caption: 'Panel de Vendedor y Punto de Venta (POS). Resumen de ventas del turno y alertas de stock.'
+                },
+                {
+                    src: '/proyects/inv.360/08_pos_catalogo_productos.png',
+                    caption: 'Catálogo Visual de Productos para Venta Directa con carrito dinámico.'
+                },
+                {
+                    src: '/proyects/inv.360/09_pos_carrito_drawer.png',
+                    caption: 'Carrito de Pedidos y Salida Inmediata de Mercancía con deducción de stock atómica.'
                 }
             ],
-            fullDescription: `Inventory 360 es una plataforma SaaS full-stack diseñada para transformar la administración de inventarios mediante la integración de Inteligencia Artificial (Google Gemini).
+            fullDescription: `Inventory 360 es una solución de software moderna diseñada para resolver la desconexión tradicional entre el control de bodega, el piso de ventas y la toma de decisiones gerenciales. Integrando capacidades avanzadas de Inteligencia Artificial Cognitiva (Google Gemini), la plataforma trasciende el simple registro transaccional, convirtiendo el inventario en un asistente activo que predice la demanda a 60 días, alerta de forma temprana sobre quiebres de stock y permite la ejecución de tareas mediante lenguaje natural hablado o escrito.
 
-Ofrece automatización de operaciones a través de lenguaje natural (texto y voz), análisis predictivo avanzado y una arquitectura robusta orientada a la escalabilidad empresarial.
+🎯 Propósito del Sistema:
+Automatizar y simplificar el flujo logístico para PyMEs y comercios minoristas, ofreciendo control integral 360° desde el ingreso de insumos hasta el checkout en punto de venta con analítica en tiempo real.
 
-🧠 Lógica de Integración AI:
-No utiliza la IA como un simple generador de texto, sino como un orquestador de intenciones. El motor evalúa el prompt, extrae parámetros clave y ejecuta la operación directa sobre MongoDB, garantizando la integridad referencial y de tipos de datos sin perder el contexto de la conversación.`,
+✨ Ventaja Diferencial (IA Activa):
+Orquestación de operaciones de base de datos a través de lenguaje natural (voz y texto) y modelos predictivos que anticipan tendencias de compra y recomiendan compras preventivas de inventario.`,
             features: [
-                "Asistente IA Cognitivo: Procesamiento de NLP para operaciones complejas mediante voz (Web Speech API) y texto.",
-                "Memoria Conversacional: Gestión de contexto persistente en MongoDB para flujos multi-turno.",
-                "Business Intelligence: Dashboard en tiempo real con modelos predictivos a 60 días.",
-                "Gestión Avanzada CRUD: Control de semáforo logístico, taxonomía dinámica y edición en línea.",
-                "Control de Acceso (RBAC): Segmentación de capacidades operativas (Administrador vs Vendedor/POS).",
-                "Resolución de Intenciones: Mapeo de JSON estructurado devuelto por Gemini directo a transacciones de DB."
+                "Semáforo Logístico en Tiempo Real: Clasificación instantánea (Normal, Bajo, Crítico) vinculada a umbrales configurables.",
+                "Asistente por Voz y Texto: Registro instantáneo dictando órdenes en lenguaje natural.",
+                "Dashboard Predictivo (BI): Gráficas comparativas entre consumo real y proyecciones generadas por algoritmos de machine learning.",
+                "Cero Alucinaciones en IA Transaccional: Implementación de esquemas JSON estructurados en Gemini con doble validación en el backend con Prisma.",
+                "Punto de Venta (POS): Catálogo visual, carrito dinámico y checkout rápido con deducción atómica de stock.",
+                "Arquitectura de Roles (RBAC): Control de acceso segmentado entre Administrador y Vendedor/POS."
             ],
-            repoLink: 'https://github.com/LuisEnrique/Inventory_360' // Cambia esto por tu link real
+            repoLink: 'https://github.com/LuisPozole/Inventory_360'
         }
         // Aquí agregaremos 'lira', 'uhc', 'mes', etc., en los siguientes pasos
     };

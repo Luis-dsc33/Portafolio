@@ -13,7 +13,7 @@ const ProjectsSection = () => {
       category: 'web',
       tech: ['React 19', 'Express 5', 'MongoDB Atlas', 'Gemini 2.5 Flash', 'Vite 5', 'Docker'],
       desc: 'Plataforma SaaS full-stack para gestión inteligente de inventarios. Integra un asistente de IA multimodal (voz y texto) orquestado con Gemini, análisis predictivo de stock a 60 días y control de acceso RBAC. Arquitectura cliente-servidor desplegada localmente.',
-      image: '/inventory-arch.png' // Asegúrate de tener esta imagen en tu carpeta public
+      image: '/proyects/inv.360/02_dashboard_kpis.png'
     },
     {
       id: 'lira',

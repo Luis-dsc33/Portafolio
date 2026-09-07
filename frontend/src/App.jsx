@@ -29,8 +29,9 @@ function App() {
     {
       id: 'inventory', name: 'Inventory_360.exe', category: 'Web', icon: '⚙️',
       title: 'Inventory 360', type: 'SaaS',
-      desc: 'Plataforma SaaS de gestión de inventario con Node.js y React. Desplegada en Docker con Cloudflare Tunnels.',
-      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=App+Preview'
+      desc: 'Plataforma SaaS integral de gestión de inventarios y punto de venta con IA Multimodal (Google Gemini 2.5 Flash).',
+      img: '/proyects/inv.360/02_dashboard_kpis.png',
+      tech: ['React', 'Node.js', 'Express', 'Prisma', 'MongoDB', 'Gemini AI']
     },
     {
       id: 'lira', name: 'Lira_AILA.exe', category: 'Backend', icon: '🤖',
