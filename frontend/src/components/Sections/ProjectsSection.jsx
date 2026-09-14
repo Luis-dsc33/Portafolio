@@ -20,9 +20,9 @@ const ProjectsSection = () => {
       title: 'LIRA (A.I.L.A)',
       type: 'AI Backend Assistant',
       category: 'backend',
-      tech: ['Node.js', 'Gemini API', 'MongoDB'],
+      tech: ['Node.js', 'Express.js', 'MongoDB', 'Gemini AI', 'whatsapp-web.js', 'Docker', 'chrono-node'],
       desc: 'Desarrollo de backend para un asistente de inteligencia artificial asíncrono con conciencia de contexto, capaz de manejar flujos de memoria y peticiones complejas.',
-      image: 'https://via.placeholder.com/600x300/0b1a15/4caf7d?text=Vista+Previa+Lira'
+      image: '/proyects/lira/reminder.jpg'
     },
     {
       id: 'uhc',
@@ -33,24 +33,7 @@ const ProjectsSection = () => {
       desc: 'Plataforma de gestión para torneos de e-sports (Ultra Hardcore). Integra plugins personalizados, automatización mediante webhooks de Discord y pre-generación de mapas.',
       image: '/proyects/UHC_NOVA/dashboard.png'
     },
-    {
-      id: 'mes',
-      title: 'SYSTEM_MES',
-      type: 'Hackathon Award (2do Lugar)',
-      category: 'web',
-      tech: ['React', 'Node.js', 'IoT'],
-      desc: 'Manufacturing Execution System (MES) desarrollado para la monitorización de plantas químicas. Proyecto galardonado en el Hackathon CANACINTRA 2025 por su impacto industrial.',
-      image: 'https://via.placeholder.com/600x300/0b1a15/4caf7d?text=Vista+Previa+System+MES'
-    },
-    {
-      id: 'agua',
-      title: 'MONITOR_AGUA',
-      type: 'Mobile App',
-      category: 'mobile',
-      tech: ['Flutter', 'Dart', 'API'],
-      desc: 'Aplicación móvil para el monitoreo inteligente del consumo de agua. Proyecto desarrollado durante el Hackathon Querétaro Digital.',
-      image: 'https://via.placeholder.com/600x300/0b1a15/4caf7d?text=Vista+Previa+Monitor+Agua'
-    },
+
     {
       id: 'cashflow',
       title: 'CASHFLOW',
@@ -79,7 +62,7 @@ const ProjectsSection = () => {
   }, [activeFilter]);
 
   return (
-    <section className="tech-section" id="proyectos">
+    <section className="tech-section reveal" id="proyectos">
       <div className="tech-header">
         <span className="header-icon" aria-hidden="true">🕹️</span>
         <h2 className="main-title">Proyectos</h2>
@@ -153,9 +136,28 @@ const ProjectsSection = () => {
                     <div className="tech-stack-arcade">
                       <span className="tech-label">TECH_STACK:</span>
                       <div className="tech-tags">
-                        {activeProject.tech.map((tech, index) => (
-                          <span key={index} className="arcade-tag">{tech}</span>
-                        ))}
+                        {activeProject.tech.map((tech, index) => {
+                            let iconPath = null;
+                            const lowerT = tech.toLowerCase();
+                            if (lowerT.includes('react')) iconPath = '/stack icons/React-Light.svg';
+                            else if (lowerT.includes('node')) iconPath = '/stack icons/NodeJS-Light.svg';
+                            else if (lowerT.includes('express')) iconPath = '/stack icons/ExpressJS-Light.svg';
+                            else if (lowerT.includes('mongo')) iconPath = '/stack icons/MongoDB.svg';
+                            else if (lowerT.includes('docker')) iconPath = '/stack icons/Docker.svg';
+                            else if (lowerT.includes('flutter')) iconPath = '/stack icons/Flutter-Light.svg';
+                            else if (lowerT.includes('prisma')) iconPath = '/stack icons/Prisma.svg';
+                            else if (lowerT.includes('vite')) iconPath = '/stack icons/Vite-Light.svg';
+                            else if (lowerT.includes('tailwind')) iconPath = '/stack icons/TailwindCSS-Light.svg';
+                            else if (lowerT.includes('riverpod')) iconPath = '/stack icons/Dart-Light.svg';
+                            else if (lowerT.includes('firebase')) iconPath = '/stack icons/Firebase-Light.svg';
+
+                            return (
+                              <span key={index} className="arcade-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                {iconPath && <img src={iconPath} alt={tech} style={{ width: '14px', height: '14px' }} />}
+                                {tech}
+                              </span>
+                            );
+                        })}
                       </div>
                     </div>
                   </div>

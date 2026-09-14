@@ -8,7 +8,7 @@ import RetroWindow from '../UI/RetroWindow';
  */
 function DesktopEnvironment() {
   return (
-    <aside className="desk-section">
+    <aside className="desk-section reveal">
       <Draggable handle=".title-bar">
         <div>
           <RetroWindow

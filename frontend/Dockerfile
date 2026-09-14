@@ -15,6 +15,9 @@ RUN npm run build
 # Etapa 2: Servidor Web de Producción
 FROM nginx:alpine
 
+# Copiamos la configuración personalizada de Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Copiamos los archivos estáticos generados por Vite (carpeta dist) al directorio de Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 

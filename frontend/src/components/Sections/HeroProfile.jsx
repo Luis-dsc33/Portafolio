@@ -9,7 +9,7 @@ import React from 'react';
 function HeroProfile({ scrollToSection }) {
   return (
     <>
-      <main className="main-content" id="inicio">
+      <main className="main-content reveal" id="inicio">
         <img src="/planta.png" alt="Enredadera retro" className="plant-decoration" />
         <div className="left-decorations"></div>
 

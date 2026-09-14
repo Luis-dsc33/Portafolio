@@ -71,7 +71,7 @@ body {
   max-width: 900px;
   height: 80vh;
   max-height: 700px;
-  transition: all 1s cubic-bezier(0.8, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.8, 0, 0.2, 1);
 }
 
 .retro-monitor-screen {
@@ -85,7 +85,7 @@ body {
   box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1);
   overflow: hidden;
   position: relative;
-  transition: all 1s cubic-bezier(0.8, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.8, 0, 0.2, 1);
 }
 
 .monitor-chin {
@@ -279,6 +279,10 @@ body {
   margin: 0px;
   overflow-x: hidden;
   overflow-y: auto;
+
+  /* Optimización de scroll: suaviza el scroll y promueve a capa GPU */
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
 }
 
 .fade-in-portfolio {
@@ -1413,6 +1417,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  contain: layout style;
 }
 
 /* Encabezado */
@@ -1488,6 +1493,10 @@ body {
     rgb(12, 48, 40) 0px 0px 0px 9px inset,
     rgba(0, 0, 0, 0.13) 11px 0px 18px inset,
     rgba(255, 255, 255, 0.03) -9px 0px 16px inset;
+
+  /* Optimización de scroll: promueve a capa GPU y contiene repaints */
+  contain: layout style paint;
+  transform: translateZ(0);
 }
 
 /* El primer borde interno 3D (::before) para AMBAS tarjetas */
@@ -1735,10 +1744,11 @@ body {
 
 .cassette-tech .tech-row {
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .cassette-tech .tech-btn {
-  flex: 1;
+  flex: 1 1 40%;
   justify-content: center;
   padding: 8px 12px;
 }
@@ -1762,7 +1772,8 @@ body {
   align-items: center;
   gap: 12px;
   box-shadow: 2px 2px 0px #171914;
-  transition: all 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
+  will-change: transform, box-shadow, background-color;
 }
 
 .tech-icon {
@@ -1941,8 +1952,8 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  margin-bottom: -15px;
-  /* Para que toque el borde inferior de la tarjeta */
+  margin-bottom: -30px;
+  /* Compensa los 30px de padding de .retro-card para que toque el borde */
 }
 
 .cartridge-cutout {
@@ -1966,6 +1977,7 @@ body {
   gap: 5px;
   width: 100%;
   height: 25px;
+  margin-top: auto;
 }
 
 .pin {
@@ -1995,7 +2007,7 @@ body {
 }
 
 .cassette-spools {
-  background-color: #07120e;
+  background: linear-gradient(180deg, #050b08 0%, #0c1a14 100%);
   border-radius: 60px;
   height: 90px;
   display: flex;
@@ -2005,23 +2017,43 @@ body {
   margin-bottom: 25px;
   position: relative;
   box-shadow:
-    inset 0px 10px 15px rgba(0, 0, 0, 0.9),
-    inset 0px -2px 5px rgba(0, 0, 0, 0.4),
-    0 1px 0 rgba(255, 255, 255, 0.08);
+    inset 0px 10px 15px rgba(0, 0, 0, 0.95),
+    inset 0px -2px 5px rgba(0, 0, 0, 0.6),
+    0 2px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* La cinta que atraviesa de lado a lado */
+.cassette-spools::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 55px;
+  right: 55px;
+  height: 28px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #0a0604 0%, #2b1d12 50%, #0a0604 100%);
+  z-index: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
 .spool {
   width: 44px;
   height: 44px;
-  border: 5px solid #eadabd;
+  border: 5px solid #d4d0c8;
   border-radius: 50%;
   background-color: transparent;
-  background-image: repeating-conic-gradient(transparent 0deg 30deg,
-      #eadabd 30deg 60deg);
+  background-image: repeating-conic-gradient(rgba(0, 0, 0, 0.4) 0deg 30deg, #eadabd 30deg 60deg);
   position: relative;
   z-index: 2;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-  animation: spinSpool 3s linear infinite;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.8);
+  animation: spinSpool 2.5s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transition: animation-duration 0.3s ease;
+}
+
+.cassette-card:hover .spool {
+  animation-duration: 1.2s; /* Gira más rápido al hacer hover */
 }
 
 @keyframes spinSpool {
@@ -2034,6 +2066,30 @@ body {
   }
 }
 
+.spool::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -1;
+  background-color: #2b1d12;
+  background-image: 
+    repeating-radial-gradient(circle at center, transparent 0, rgba(0,0,0,0.5) 1px, transparent 2px),
+    conic-gradient(from 0deg, #120c07 0deg, #3a2517 45deg, #120c07 90deg, #3a2517 135deg, #120c07 180deg, #3a2517 225deg, #120c07 270deg, #3a2517 315deg, #120c07 360deg);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.9), inset 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.spool:first-child::before {
+  width: 80px;
+  height: 80px;
+}
+
+.spool:last-child::before {
+  width: 52px;
+  height: 52px;
+}
 .spool::after {
   content: '';
   position: absolute;
@@ -2042,9 +2098,9 @@ body {
   transform: translate(-50%, -50%);
   width: 14px;
   height: 14px;
-  background-color: #07120e;
+  background: radial-gradient(circle, #2a3c33 0%, #07120e 100%);
   border-radius: 50%;
-  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 .tape-window {
@@ -2054,33 +2110,68 @@ body {
   transform: translate(-50%, -50%);
   width: 180px;
   height: 48px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 2px solid #10261e;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  border: 2px solid #1a3328;
   border-radius: 4px;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 3px 6px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0,0,0,0.5);
+}
+
+.tape-window::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #ff3b30;
+  box-shadow: 0 0 8px 2px rgba(255, 59, 48, 0.8);
+  animation: blinkTapeLed 1.5s infinite;
+  z-index: 3;
+}
+
+@keyframes blinkTapeLed {
+  0%, 100% { opacity: 0.2; box-shadow: 0 0 4px 1px rgba(255, 59, 48, 0.4); }
+  50% { opacity: 1; box-shadow: 0 0 10px 3px rgba(255, 59, 48, 0.9); }
 }
 
 .tape-roll {
   width: 100%;
   height: 28px;
-  background: linear-gradient(90deg,
-      #120c07 0%, #2b1d12 15%, #4a3320 30%, #c4a885 50%, #4a3320 70%, #120c07 85%, #0a0604 100%);
+  background: repeating-linear-gradient(90deg,
+      #0a0604 0px, #1a120d 8px, #3a2517 15px, #c4a885 18px, #0a0604 22px);
+  background-size: 44px 100%;
   border-radius: 2px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9), 0 1px 1px rgba(255, 255, 255, 0.1);
+  animation: moveTape 1.25s linear infinite;
+  will-change: background-position;
+  transition: animation-duration 0.3s ease;
+}
+
+.cassette-card:hover .tape-roll {
+  animation-duration: 0.6s; /* Cinta se mueve más rápido al hacer hover */
+}
+
+@keyframes moveTape {
+  0% { background-position: 0 0; }
+  100% { background-position: 44px 0; }
 }
 
 .tape-ruler {
   display: flex;
   justify-content: space-between;
   font-family: 'VT323', monospace;
-  font-size: 0.7rem;
-  color: #55806b;
+  font-size: 0.75rem;
+  color: #74a88d;
   line-height: 1;
   padding: 0 5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
 .cassette-tabs {
@@ -2128,6 +2219,8 @@ body {
     0px 4px 0px #0a0a0a,
     0px 6px 4px rgba(0, 0, 0, 0.5);
   transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
+  will-change: transform, box-shadow, background-color;
+  backface-visibility: hidden;
 }
 
 .tab-btn:hover {
@@ -2157,6 +2250,8 @@ body {
   background-color: #1a1a1a;
   border-radius: 1px;
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.9), 0px 1px 0px rgba(255, 255, 255, 0.4);
+  will-change: background-color, box-shadow;
+  backface-visibility: hidden;
 }
 
 .tab-btn.active .btn-led {
@@ -2189,6 +2284,8 @@ body {
   border-radius: 6px;
   padding: 4px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  contain: layout style paint;
+  transform: translateZ(0);
 }
 
 .board-outer-frame {
@@ -2304,6 +2401,8 @@ body {
   position: relative;
   box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.12), inset 2px 2px 0px rgba(255, 255, 255, 0.7);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
 }
 
 .tool-card:hover {
@@ -2779,6 +2878,8 @@ body {
 
   /* Un pequeño efecto de flotación opcional (si te gusta) */
   animation: floatCoffee 4s ease-in-out infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Hacerlo más pequeño en celulares para que no tape el texto */
@@ -2811,6 +2912,8 @@ body {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  contain: layout style paint;
+  transform: translateZ(0);
 }
 
 .crt-screen {
@@ -2840,6 +2943,7 @@ body {
   pointer-events: none;
   /* Crucial para poder hacer clic abajo */
   z-index: 10;
+  transform: translateZ(0);
 }
 
 /* Brillo interior del tubo CRT */
@@ -2900,7 +3004,7 @@ body {
   font-size: 1.3rem;
   cursor: pointer;
   color: #a0926c;
-  transition: all 0.1s ease;
+  transition: color 0.1s ease, text-shadow 0.1s ease;
   white-space: pre;
   /* Para que respete los espacios en blanco del "> " */
 }
@@ -3064,7 +3168,8 @@ body {
   padding: 2px 6px;
   cursor: pointer;
   border-radius: 2px;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  will-change: color, border-color, background-color;
 }
 
 .filter-btn:hover {
@@ -3547,4 +3652,19 @@ body {
   .tech-belt {
     padding-left: 0;
   }
+}
+
+/* ==========================================================================
+   ANIMACIONES DE SCROLL (REVEAL)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }

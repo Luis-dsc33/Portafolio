@@ -165,8 +165,38 @@ En el Frontend utiliza React, Vite y Tailwind CSS para una SPA rápida y respons
                 "Flujos de Autenticación Segura: Acceso protegido basado en roles. Solo capitanes o administradores pueden interactuar con funciones de gestión."
             ],
             repoLink: '#'
+        },
+        lira: {
+            gallery: [
+                {
+                    src: '/proyects/lira/reminder.jpg',
+                    caption: 'Lira: Asistente de IA para WhatsApp. Demostración de recordatorios en lenguaje natural.'
+                },
+                {
+                    src: '/proyects/lira/diary.jpg',
+                    caption: 'Diario Emocional. La IA interactúa proactivamente y registra el estado de ánimo.'
+                },
+                {
+                    src: '/proyects/lira/lists.jpg',
+                    caption: 'Gestión Inteligente de Listas. Operaciones CRUD mediante procesamiento de lenguaje natural (NLP).'
+                }
+            ],
+            fullDescription: `Lira es un servicio de backend robusto que opera como un agente inteligente headless integrado directamente con WhatsApp como canal de comunicación principal. A través de whatsapp-web.js, Lira escucha mensajes entrantes en tiempo real, los enruta hacia la lógica de inteligencia artificial y devuelve respuestas contextualizadas, todo sin necesidad de interfaz gráfica.
+
+Mucho más que un simple bot conversacional, Lira funciona como una arquitectura de backend proactiva capaz de gestionar la programación de tareas complejas, el seguimiento del estado emocional, el análisis de intenciones mediante lenguaje natural y el cambio dinámico de personalidad de la IA según el usuario que interactúa.`,
+            features: [
+                "Contexto Dinámico Multipersonaje: Cambia dinámicamente los system prompts y reglas de procesamiento basándose en el usuario entrante. Contextos aislados, historial independiente por usuario y respuestas personalizadas por contacto.",
+                "Programación en Lenguaje Natural: Emplea chrono-node para extraer datos temporales de mensajes en español. Soporta recordatorios únicos y recurrentes con manejo correcto de zonas horarias UTC.",
+                "Workers en Segundo Plano: Bucles de validación recursivos que consultan continuamente la base de datos en busca de eventos programados, generando automáticamente resúmenes y enviando notificaciones proactivas vía WhatsApp.",
+                "Análisis de Sentimientos con LLM: Diario emocional que consulta usuarios vía WhatsApp, procesa respuestas con Gemini en JSON estructurado, y genera resúmenes semanales automatizados.",
+                "Procesamiento Multimodal: Recibe y procesa imágenes y notas de voz. Las imágenes se analizan con Gemini Vision y los audios se transcriben automáticamente antes de ser procesados por el pipeline NLU.",
+                "Reintentos con Backoff Exponencial: Sistema de retry robusto con backoff exponencial para manejar errores 503 del modelo de IA.",
+                "Gestión de Listas Inteligente: CRUD completo de listas temáticas vía lenguaje natural: agregar ítems, ver listas, borrar ítems individuales, eliminar listas completas.",
+                "Router de Intenciones NLU: Clasificador de intenciones zero-shot con Gemini que analiza mensajes junto con el historial de contexto para determinar la acción correcta entre 10+ intenciones posibles."
+            ],
+            repoLink: '#'
         }
-        // Aquí agregaremos 'lira', 'mes', etc., en los siguientes pasos
+        // Aquí agregaremos 'mes', etc., en los siguientes pasos
     };
 
     // Validamos si existe la información del proyecto en nuestro diccionario
@@ -268,15 +298,22 @@ En el Frontend utiliza React, Vite y Tailwind CSS para una SPA rápida y respons
                                 boxShadow: '4px 4px 0px rgba(0,0,0,0.2)'
                             }}>
                                 {baseProject.tech.map((t, i) => {
-                                    // Asignamos iconos y colores base según la tecnología
-                                    let icon = '⚙️';
-                                    let color = '#2c2416';
-                                    if (t.toLowerCase().includes('react')) { icon = '⚛️'; color = '#61dafb'; }
-                                    if (t.toLowerCase().includes('node') || t.toLowerCase().includes('express')) { icon = '🟢'; color = '#8cc84b'; }
-                                    if (t.toLowerCase().includes('mongo')) { icon = '🍃'; color = '#47a248'; }
-                                    if (t.toLowerCase().includes('gemini') || t.toLowerCase().includes('ai')) { icon = '🧠'; color = '#4285f4'; }
-                                    if (t.toLowerCase().includes('docker')) { icon = '🐋'; color = '#0db7ed'; }
-                                    if (t.toLowerCase().includes('flutter')) { icon = '💙'; color = '#02569b'; }
+                                    let iconPath = null;
+                                    let fallbackIcon = '⚙️';
+                                    const lowerT = t.toLowerCase();
+                                    
+                                    if (lowerT.includes('react')) iconPath = '/stack icons/React-Light.svg';
+                                    else if (lowerT.includes('node')) iconPath = '/stack icons/NodeJS-Light.svg';
+                                    else if (lowerT.includes('express')) iconPath = '/stack icons/ExpressJS-Light.svg';
+                                    else if (lowerT.includes('mongo')) iconPath = '/stack icons/MongoDB.svg';
+                                    else if (lowerT.includes('gemini') || lowerT.includes('ai')) fallbackIcon = '🧠'; 
+                                    else if (lowerT.includes('docker')) iconPath = '/stack icons/Docker.svg';
+                                    else if (lowerT.includes('flutter')) iconPath = '/stack icons/Flutter-Light.svg';
+                                    else if (lowerT.includes('prisma')) iconPath = '/stack icons/Prisma.svg';
+                                    else if (lowerT.includes('vite')) iconPath = '/stack icons/Vite-Light.svg';
+                                    else if (lowerT.includes('tailwind')) iconPath = '/stack icons/TailwindCSS-Light.svg';
+                                    else if (lowerT.includes('riverpod')) iconPath = '/stack icons/Dart-Light.svg';
+                                    else if (lowerT.includes('firebase')) iconPath = '/stack icons/Firebase-Light.svg';
 
                                     return (
                                         <div key={i} className="tech-item-retro" style={{
@@ -292,7 +329,11 @@ En el Frontend utiliza React, Vite y Tailwind CSS para una SPA rápida y respons
                                             transition: 'transform 0.1s',
                                             cursor: 'default'
                                         }}>
-                                            <span style={{ fontSize: '2.5rem', marginBottom: '10px' }}>{icon}</span>
+                                            {iconPath ? (
+                                                <img src={iconPath} alt={t} style={{ width: '40px', height: '40px', marginBottom: '10px' }} />
+                                            ) : (
+                                                <span style={{ fontSize: '2.5rem', marginBottom: '10px' }}>{fallbackIcon}</span>
+                                            )}
                                             <span style={{
                                                 fontFamily: "'VT323', monospace",
                                                 fontSize: '1.2rem',

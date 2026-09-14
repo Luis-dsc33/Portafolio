@@ -5,27 +5,27 @@ const TechSection = () => {
 
     const frameworksData = {
         Frontend: [
-            { name: 'React', icon: '⚛️' },
-            { name: 'Next.js', icon: 'Ⓝ' },
-            { name: 'Astro', icon: '🔺' },
-            { name: 'Tailwind', icon: '🌊' }
+            { name: 'React', icon: '/stack icons/React-Light.svg' },
+            { name: 'Vite', icon: '/stack icons/Vite-Light.svg' },
+            { name: 'Tailwind', icon: '/stack icons/TailwindCSS-Light.svg' },
+            { name: 'Zustand', icon: '/stack icons/React-Light.svg' } // Redux.svg or React fallback
         ],
         Backend: [
-            { name: 'Node.js', icon: '🟢' },
-            { name: 'Express', icon: '🚂' },
-            { name: 'Python', icon: '🐍' },
-            { name: 'MySQL', icon: '🐬' }
+            { name: 'Node.js', icon: '/stack icons/NodeJS-Light.svg' },
+            { name: 'Express', icon: '/stack icons/ExpressJS-Light.svg' },
+            { name: 'Prisma', icon: '/stack icons/Prisma.svg' },
+            { name: 'Docker', icon: '/stack icons/Docker.svg' }
         ],
         Móvil: [
-            { name: 'React Native', icon: '📱' },
-            { name: 'Flutter', icon: '💙' },
-            { name: 'Kotlin', icon: '🤖' },
-            { name: 'Swift', icon: '🍎' }
+            { name: 'Flutter', icon: '/stack icons/Flutter-Light.svg' },
+            { name: 'Dart', icon: '/stack icons/Dart-Light.svg' },
+            { name: 'Riverpod', icon: '/stack icons/Dart-Light.svg' },
+            { name: 'Firebase', icon: '/stack icons/Firebase-Light.svg' }
         ]
     };
 
     return (
-        <section className="tech-section" id="tecnologias">
+        <section className="tech-section reveal" id="tecnologias">
             <div className="tech-header">
                 <span className="header-icon" aria-hidden="true">💾</span>
                 <h2 className="main-title">Tecnologías</h2>
@@ -52,22 +52,22 @@ const TechSection = () => {
                         {/* Fila 1 */}
                         <div className="tech-row">
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#f7df1e', color: '#000' }}>JS</span> JavaScript
+                                <img src="/stack icons/JavaScript.svg" alt="JS" className="tech-icon" /> JavaScript
                             </button>
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#3178c6', color: '#fff' }}>TS</span> TypeScript
+                                <img src="/stack icons/TypeScript.svg" alt="TS" className="tech-icon" /> TypeScript
                             </button>
                         </div>
                         {/* Fila 2 */}
                         <div className="tech-row">
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#e34f26', color: '#fff' }}>5</span> HTML
+                                <img src="/stack icons/HTML.svg" alt="HTML" className="tech-icon" /> HTML
                             </button>
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#1572B6', color: '#fff' }}>3</span> CSS
+                                <img src="/stack icons/CSS.svg" alt="CSS" className="tech-icon" /> CSS
                             </button>
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#4479A1', color: '#fff' }}>SQL</span> SQL
+                                <img src="/stack icons/PostgreSQL-Light.svg" alt="SQL" className="tech-icon" /> SQL
                             </button>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ const TechSection = () => {
                         <div className="tech-row">
                             {frameworksData[activeTab].map((tech, index) => (
                                 <button key={index} className="tech-btn">
-                                    {tech.icon} {tech.name}
+                                    <img src={tech.icon} alt={tech.name} className="tech-icon" /> {tech.name}
                                 </button>
                             ))}
                         </div>
@@ -167,18 +167,18 @@ const TechSection = () => {
                     <div className="card-tech-area cartridge-tech">
                         <div className="tech-row">
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#336791', color: '#fff' }}>PG</span> PostgreSQL
+                                <img src="/stack icons/PostgreSQL-Light.svg" alt="PG" className="tech-icon" /> PostgreSQL
                             </button>
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#47A248', color: '#fff' }}>MG</span> MongoDB
+                                <img src="/stack icons/MongoDB.svg" alt="MG" className="tech-icon" /> MongoDB
                             </button>
                         </div>
                         <div className="tech-row">
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#F29111', color: '#fff' }}>MS</span> MySQL
+                                <img src="/stack icons/Firebase-Light.svg" alt="FB" className="tech-icon" /> Firebase
                             </button>
                             <button className="tech-btn">
-                                <span className="tech-icon" style={{ backgroundColor: '#CC292B', color: '#fff' }}>RD</span> Redis
+                                <img src="/stack icons/SQLite.svg" alt="SQ" className="tech-icon" /> SQLite
                             </button>
                         </div>
                     </div>
@@ -223,14 +223,14 @@ const TechSection = () => {
                     <div className="pegboard-area">
                         <div className="tools-grid">
                             {[
-                                { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
-                                { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
-                                { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
-                                { name: 'Codex', icon: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg' },
-                                { name: 'NPM', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg' },
-                                { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg' },
-                                { name: 'Netlify', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original.svg' },
-                                { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' }
+                                { name: 'Git', icon: '/stack icons/Git.svg' },
+                                { name: 'GitHub', icon: '/stack icons/Github-Light.svg' },
+                                { name: 'VS Code', icon: '/stack icons/VSCode-Light.svg' },
+                                { name: 'Docker', icon: '/stack icons/Docker.svg' },
+                                { name: 'NPM', icon: '/stack icons/Npm-Light.svg' },
+                                { name: 'Vercel', icon: '/stack icons/Vercel-Light.svg' },
+                                { name: 'Figma', icon: '/stack icons/Figma-Light.svg' },
+                                { name: 'Postman', icon: '/stack icons/Postman.svg' }
                             ].map((tool, index) => (
                                 <div key={index} className="tool-card">
                                     <div className="tool-pin">

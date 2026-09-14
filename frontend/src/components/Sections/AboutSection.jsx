@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutSection = () => {
     return (
-        <section className="about-section" id="sobre-mi">
+        <section className="about-section reveal" id="sobre-mi">
 
             {/* --- IMAGEN DECORATIVA DEL CAFÉ --- */}
             <img
