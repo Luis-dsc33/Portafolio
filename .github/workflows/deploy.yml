@@ -1,0 +1,19 @@
+name: Despliegue a Raspberry Pi
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Desplegar contenedores
+        run: |
+          docker compose down
+          docker compose up -d --build
