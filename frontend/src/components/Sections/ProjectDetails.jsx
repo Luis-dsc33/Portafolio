@@ -61,8 +61,112 @@ Orquestación de operaciones de base de datos a través de lenguaje natural (voz
                 "Arquitectura de Roles (RBAC): Control de acceso segmentado entre Administrador y Vendedor/POS."
             ],
             repoLink: 'https://github.com/LuisPozole/Inventory_360'
+        },
+        cashflow: {
+            gallery: [
+                {
+                    src: '/proyects/cashflow/c1.jpeg',
+                    caption: 'Pantalla principal de CashFlow - Resumen de finanzas.'
+                },
+                {
+                    src: '/proyects/cashflow/c2.jpeg',
+                    caption: 'Vista del panel de control.'
+                },
+                {
+                    src: '/proyects/cashflow/c3.jpeg',
+                    caption: 'Gestión de transacciones y presupuesto.'
+                },
+                {
+                    src: '/proyects/cashflow/c4.jpeg',
+                    caption: 'Control de ingresos y egresos.'
+                },
+                {
+                    src: '/proyects/cashflow/c5.jpeg',
+                    caption: 'Metas de ahorro e información adicional.'
+                },
+                {
+                    src: '/proyects/cashflow/c6.jpeg',
+                    caption: 'Asesor Financiero IA (Gemini).'
+                }
+            ],
+            fullDescription: `Esta es una aplicación móvil desarrollada en Flutter orientada a la gestión de finanzas personales, con la capacidad de extenderse para manejar finanzas compartidas en pareja. La aplicación ayuda a los usuarios a llevar un control estricto de su presupuesto, ingresos, gastos y metas financieras. Cuenta con un diseño amigable de estilo pastel y un asistente impulsado por inteligencia artificial (Gemini) para brindar resúmenes y consejos personalizados.
+
+Arquitectura y Tecnologías:
+El proyecto está estructurado de manera modular para garantizar escalabilidad y facilidad de mantenimiento utilizando Flutter (Dart), Riverpod para la gestión del estado, y Firebase (Authentication, Cloud Firestore) como backend. La IA está integrada con Google Generative AI (Gemini API) y se utilizan fl_chart para gráficos y flutter_local_notifications para notificaciones locales.
+
+Justificación Técnica:
+La elección de Flutter como framework principal permite construir un producto de alta calidad en múltiples plataformas utilizando una única base de código. La utilización de Firebase proporciona almacenamiento y sincronización de datos en tiempo real, vital para una app financiera que se usa a diario.`,
+            features: [
+                "Autenticación Sencilla: Sistema de inicio de sesión fácil que automáticamente mapea nombres de usuarios genéricos.",
+                "Panel de Control (Dashboard): Vista panorámica de las finanzas con gráficos de dona para el control del presupuesto.",
+                "Gestión de Transacciones: Registro de ingresos y gastos diarios organizados por categorías (individual o compartida).",
+                "Presupuesto Mensual: Definición y seguimiento de topes de gastos fijos y variables.",
+                "Metas de Ahorro: Seguimiento interactivo para objetivos a largo plazo (ej. Casa, Viaje).",
+                "Asesor Financiero IA (Gemini): Lectura del estado de cuenta y consejos dinámicos o alertas ante desvíos de presupuesto."
+            ],
+            repoLink: '#'
+        },
+        uhc: {
+            gallery: [
+                {
+                    src: '/proyects/UHC_NOVA/homepage.png',
+                    caption: 'Página Principal (Home): Vista de aterrizaje del evento.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/dashboard.png',
+                    caption: 'Dashboard Principal: Vista general del torneo, métricas y estado global.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/mecanicas.png',
+                    caption: 'Mecánicas Activas: Panel de control interactivo para reglas y eventos en tiempo real.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/equipos.png',
+                    caption: 'Gestión de Equipos: Vista administrativa de los escuadrones y su clasificación.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/info_del equipo.png',
+                    caption: 'Detalle de Escuadrón: Panel con la información completa del equipo y sus integrantes.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/registration.png',
+                    caption: 'Registro de Escuadrones: Interfaz del flujo de inscripción y validación de roles.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/login.png',
+                    caption: 'Acceso/Login: Interfaz de autenticación de usuarios y portal seguro.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/perfil.png',
+                    caption: 'Perfil de Jugador: Panel de administración de la cuenta del participante.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/premios.png',
+                    caption: 'Sistema de Premios: Vista de la bolsa de premios y distribución de recompensas.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/reglas.png',
+                    caption: 'Reglamento: Visualización del compendio de reglas y normativas del evento.'
+                },
+                {
+                    src: '/proyects/UHC_NOVA/hoja de ruta.png',
+                    caption: 'Hoja de Ruta (Roadmap): Cronograma de fases y planificación del torneo.'
+                }
+            ],
+            fullDescription: `UHC NOVA es un sistema avanzado de gestión de torneos diseñado para automatizar y administrar eventos competitivos de e-sports, específicamente para la modalidad Ultra Hardcore (UHC). Actúa como una solución completa que integra un panel de control interactivo para los participantes y un panel de administración seguro para los organizadores, permitiendo el control total sobre los eventos, los registros de equipos y las métricas en tiempo real.
+
+Arquitectura y Tecnologías:
+El proyecto está construido bajo estándares de Clean Code, una arquitectura cliente-servidor desacoplada y orientada a servicios (SaaS).
+En el Frontend utiliza React, Vite y Tailwind CSS para una SPA rápida y responsiva, apoyada con Motion y Radix para micro-animaciones fluidas y una experiencia premium. El Backend está desarrollado con Node.js y Express, proveyendo una API RESTful de alto rendimiento. Para la Base de Datos se implementó Prisma ORM con SQLite, diseñado para escalar a PostgreSQL, y cuenta con un sistema de Ciberseguridad robusto utilizando JWT (JSON Web Tokens) y encriptación Bcrypt.`,
+            features: [
+                "Sistema Avanzado de Registro y Jerarquización de Equipos: Creación de 'Escuadrones' de 4 jugadores con roles de Capitán y Recluta, con validación automática de integridad.",
+                "Terminal de 'Alto Mando' (Back-office): Panel administrativo seguro para monitorear métricas, gestionar fases del torneo y auditar comprobantes.",
+                "Dashboards en Tiempo Real (Telemetría): Interfaces dinámicas con cuenta regresiva, estado del torneo y 'mecánicas' activas en el evento.",
+                "Flujos de Autenticación Segura: Acceso protegido basado en roles. Solo capitanes o administradores pueden interactuar con funciones de gestión."
+            ],
+            repoLink: '#'
         }
-        // Aquí agregaremos 'lira', 'uhc', 'mes', etc., en los siguientes pasos
+        // Aquí agregaremos 'lira', 'mes', etc., en los siguientes pasos
     };
 
     // Validamos si existe la información del proyecto en nuestro diccionario

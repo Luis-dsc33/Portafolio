@@ -43,7 +43,8 @@ function App() {
       id: 'uhc', name: 'UHC_NOVA.exe', category: 'Web', icon: '🎮',
       title: 'UHC Nova', type: 'Full-Stack',
       desc: 'Plataforma Full-Stack para la gestión de torneos de e-sports y eventos interactivos de Minecraft.',
-      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=UHC+App'
+      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=UHC+App',
+      tech: ['React', 'Node.js', 'Express', 'Prisma', 'Tailwind CSS', 'Vite']
     },
     {
       id: 'agua', name: 'Monitor_Agua.apk', category: 'Mobile', icon: '📱',
@@ -56,6 +57,13 @@ function App() {
       title: 'Hackathons', type: 'Eventos',
       desc: 'Proyectos ganadores como el software MES (2do Lugar CANACINTRA 2025) y propuestas EII 2024.',
       img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=Logros'
+    },
+    {
+      id: 'cashflow', name: 'CashFlow.apk', category: 'Mobile', icon: '📱',
+      title: 'CashFlow', type: 'Finanzas Personales',
+      desc: 'App móvil en Flutter para gestión de finanzas personales y compartidas con un asistente IA (Gemini).',
+      img: '/proyects/cashflow/cashflow_preview.jpg',
+      tech: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'Gemini AI']
     },
   ];
 

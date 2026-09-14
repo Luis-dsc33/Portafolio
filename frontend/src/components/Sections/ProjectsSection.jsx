@@ -29,9 +29,9 @@ const ProjectsSection = () => {
       title: 'UHC NOVA',
       type: 'E-Sports Platform',
       category: 'otros',
-      tech: ['Minecraft API', 'Webhooks', 'Full-Stack'],
+      tech: ['React', 'Node.js', 'Express', 'Prisma', 'Tailwind CSS', 'Vite'],
       desc: 'Plataforma de gestión para torneos de e-sports (Ultra Hardcore). Integra plugins personalizados, automatización mediante webhooks de Discord y pre-generación de mapas.',
-      image: 'https://via.placeholder.com/600x300/0b1a15/4caf7d?text=Vista+Previa+UHC+NOVA'
+      image: '/proyects/UHC_NOVA/dashboard.png'
     },
     {
       id: 'mes',
@@ -50,6 +50,15 @@ const ProjectsSection = () => {
       tech: ['Flutter', 'Dart', 'API'],
       desc: 'Aplicación móvil para el monitoreo inteligente del consumo de agua. Proyecto desarrollado durante el Hackathon Querétaro Digital.',
       image: 'https://via.placeholder.com/600x300/0b1a15/4caf7d?text=Vista+Previa+Monitor+Agua'
+    },
+    {
+      id: 'cashflow',
+      title: 'CASHFLOW',
+      type: 'Personal Finance App',
+      category: 'mobile',
+      tech: ['Flutter', 'Riverpod', 'Firebase', 'Gemini AI', 'fl_chart'],
+      desc: 'Aplicación móvil para la gestión de finanzas personales y compartidas. Cuenta con control estricto de presupuesto, gráficos y un asistente IA (Gemini) para resúmenes y consejos personalizados.',
+      image: '/proyects/cashflow/cashflow_preview.jpg'
     }
   ];
 
