@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Timeline from './Timeline';
 const AboutSection = () => {
     return (
         <section className="about-section reveal" id="sobre-mi">
@@ -36,9 +36,8 @@ const AboutSection = () => {
                             {/* Columna Izquierda: Avatar y Stats */}
                             <div className="profile-sidebar">
                                 <div className="avatar-frame">
-                                    {/* Aquí puedes poner tu foto */}
                                     <img
-                                        src="https://via.placeholder.com/150x150/153e34/eaddbe?text=Luis"
+                                        src="/perfil2.jpeg"
                                         alt="Luis Enrique"
                                         className="pixel-avatar"
                                     />
@@ -49,16 +48,16 @@ const AboutSection = () => {
 
                                 <div className="profile-stats">
                                     <div className="stat-row">
-                                        <span className="stat-label">Nivel:</span>
+                                        <span className="stat-label">Edad:</span>
                                         <span className="stat-value">22</span>
                                     </div>
                                     <div className="stat-row">
-                                        <span className="stat-label">Base:</span>
-                                        <span className="stat-value">San Juan del Río</span>
+                                        <span className="stat-label">Ubicación:</span>
+                                        <span className="stat-value">Qurétaro</span>
                                     </div>
                                     <div className="stat-row">
                                         <span className="stat-label">Inglés:</span>
-                                        <span className="stat-value">B2 Certificado</span>
+                                        <span className="stat-value">B2 (Certificado Enlgish score)</span>
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +86,10 @@ const AboutSection = () => {
                     </div>
                 </div>
             </div>
+
+            {/* --- SECCIÓN LÍNEA DE TIEMPO (CV) --- */}
+            <Timeline />
+            
         </section>
     );
 };

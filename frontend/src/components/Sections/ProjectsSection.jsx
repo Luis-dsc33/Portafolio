@@ -173,7 +173,7 @@ const ProjectsSection = () => {
                     {/* El botón de repo lo podemos dejar para abrir el GitHub directamente */}
                     <button
                       className="arcade-btn secondary-btn"
-                      onClick={() => window.open('https://github.com/tu-usuario', '_blank')}
+                      onClick={() => window.open('https://github.com/Luis-dsc33', '_blank')}
                     >
                       [B] REPO
                     </button>

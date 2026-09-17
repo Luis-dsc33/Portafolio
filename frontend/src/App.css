@@ -42,6 +42,123 @@ body {
 }
 
 /* ==========================================================================
+   SCROLLBAR GLOBAL (Windows 98 Style)
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background-color: #dfdfdf;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  background-image: 
+    repeating-linear-gradient(45deg, #dfdfdf 25%, transparent 25%, transparent 75%, #dfdfdf 75%, #dfdfdf), 
+    repeating-linear-gradient(45deg, #dfdfdf 25%, transparent 25%, transparent 75%, #dfdfdf 75%, #dfdfdf);
+  background-position: 0 0, 2px 2px;
+  background-size: 4px 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--window-bg);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+
+::-webkit-scrollbar-thumb:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background-color: var(--window-bg);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M4 10 L8 5 L12 10 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  height: 16px;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background-color: var(--window-bg);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M4 6 L8 11 L12 6 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  height: 16px;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement {
+  background-color: var(--window-bg);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M10 4 L5 8 L10 12 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  width: 16px;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment {
+  background-color: var(--window-bg);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="black" d="M6 4 L11 8 L6 12 Z"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  width: 16px;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #dfdfdf;
+}
+
+/* ==========================================================================
    2. ENTORNO FÍSICO (MONITOR, TERMINAL Y ARRANQUE)
    ========================================================================== */
 .desktop-environment {
@@ -723,6 +840,16 @@ body {
   max-width: 800px;
   align-items: flex-start;
   text-align: left;
+}
+
+.portfolio-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .photo-frame {
@@ -1756,6 +1883,7 @@ body {
 .tech-row {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 18px;
 }
 
@@ -3655,6 +3783,188 @@ body {
 }
 
 /* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+.contact-section {
+  width: 100%;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.contact-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1400px;
+  margin-top: 40px;
+}
+
+.contact-card {
+  background-color: #eedfb5;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+  border: 2px solid #000;
+  width: calc(33.333% - 20px);
+  min-width: 320px;
+  max-width: 420px;
+  min-height: 480px;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El pequeño tab a la izquierda */
+.contact-card::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 40px;
+  width: 12px;
+  height: 25px;
+  background-color: #d4c4a8;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+  background-size: 4px 4px;
+  border: 2px solid #000;
+  border-right: none;
+  z-index: -1;
+  box-shadow: -2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.contact-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 2px solid #000;
+  color: white;
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.github-contact .contact-titlebar { background-color: #3b2b4e; }
+.email-contact .contact-titlebar { background-color: #b84742; }
+.linkedin-contact .contact-titlebar { background-color: #1a68a5; }
+
+/* Colores para las pestañas (tabs) */
+.github-contact::before { background-color: #aa9ec2; }
+.email-contact::before { background-color: #e2a8a5; }
+.linkedin-contact::before { background-color: #a4c9e8; }
+
+.contact-close-btn {
+  background-color: #eedfb5;
+  border: 2px solid #000;
+  color: #000;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 1px 1px 0px #000;
+}
+.contact-close-btn:active {
+  box-shadow: inset 1px 1px 0px #000;
+}
+
+.contact-body {
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.contact-icon-wrapper {
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contact-pixel-icon {
+  width: 150px;
+  height: 150px;
+  image-rendering: pixelated;
+}
+
+.pixel-envelope {
+  font-size: 8rem;
+  line-height: 1;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+}
+
+.contact-text {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+}
+.github-contact .contact-text { color: #000; font-weight: bold; }
+.email-contact .contact-text { color: #b84742; font-weight: bold; }
+.linkedin-contact .contact-text { color: #1a68a5; font-weight: bold; }
+
+.contact-divider {
+  width: 100%;
+  border-top: 2px dotted #000;
+  margin: 10px 0 20px 0;
+}
+.github-contact .contact-divider { border-top: 2px dotted #3b2b4e; }
+.email-contact .contact-divider { border-top: 2px dotted #b84742; }
+.linkedin-contact .contact-divider { border-top: 2px dotted #1a68a5; }
+
+.contact-btn {
+  background-color: #eedfb5;
+  border: 2px solid #000;
+  color: #000;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  padding: 5px 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 2px 2px 0px #000;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.contact-btn:active {
+  box-shadow: 0px 0px 0px #000;
+  transform: translate(2px, 2px);
+}
+
+.contact-btn .arrow {
+  border: 1px solid #000;
+  padding: 0 4px;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
    ANIMACIONES DE SCROLL (REVEAL)
    ========================================================================== */
 .reveal {
@@ -3667,4 +3977,43 @@ body {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ==========================================================================
+   ADAPTACIONES MÓVILES ADICIONALES (Globales)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .tech-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tech-section, .projects-section {
+    padding: 40px 20px !important;
+  }
+
+  .main-title {
+    font-size: 3rem !important;
+  }
+
+  .floppy-card, .cassette-card, .cartridge-card {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

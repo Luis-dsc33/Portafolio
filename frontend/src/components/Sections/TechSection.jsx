@@ -6,21 +6,20 @@ const TechSection = () => {
     const frameworksData = {
         Frontend: [
             { name: 'React', icon: '/stack icons/React-Light.svg' },
+            { name: 'Angular', icon: '/stack icons/Angular-Light.svg' },
+            { name: 'Next', icon: '/stack icons/NextJS-Light.svg' },
             { name: 'Vite', icon: '/stack icons/Vite-Light.svg' },
             { name: 'Tailwind', icon: '/stack icons/TailwindCSS-Light.svg' },
-            { name: 'Zustand', icon: '/stack icons/React-Light.svg' } // Redux.svg or React fallback
+            { name: 'HTML', icon: '/stack icons/HTML.svg' },
+            { name: 'CSS', icon: '/stack icons/CSS.svg' }
         ],
         Backend: [
             { name: 'Node.js', icon: '/stack icons/NodeJS-Light.svg' },
-            { name: 'Express', icon: '/stack icons/ExpressJS-Light.svg' },
-            { name: 'Prisma', icon: '/stack icons/Prisma.svg' },
-            { name: 'Docker', icon: '/stack icons/Docker.svg' }
+            { name: 'Express', icon: '/stack icons/ExpressJS-Light.svg' }
         ],
         Móvil: [
             { name: 'Flutter', icon: '/stack icons/Flutter-Light.svg' },
-            { name: 'Dart', icon: '/stack icons/Dart-Light.svg' },
-            { name: 'Riverpod', icon: '/stack icons/Dart-Light.svg' },
-            { name: 'Firebase', icon: '/stack icons/Firebase-Light.svg' }
+            { name: 'Riverpod', icon: '/stack icons/Dart-Light.svg' }
         ]
     };
 
@@ -57,14 +56,14 @@ const TechSection = () => {
                             <button className="tech-btn">
                                 <img src="/stack icons/TypeScript.svg" alt="TS" className="tech-icon" /> TypeScript
                             </button>
+                            <button className="tech-btn">
+                                <img src="/stack icons/Python-Light.svg" alt="PY" className="tech-icon" /> Python
+                            </button>
                         </div>
                         {/* Fila 2 */}
                         <div className="tech-row">
                             <button className="tech-btn">
-                                <img src="/stack icons/HTML.svg" alt="HTML" className="tech-icon" /> HTML
-                            </button>
-                            <button className="tech-btn">
-                                <img src="/stack icons/CSS.svg" alt="CSS" className="tech-icon" /> CSS
+                                <img src="/stack icons/Dart-Light.svg" alt="Dart" className="tech-icon" /> Dart
                             </button>
                             <button className="tech-btn">
                                 <img src="/stack icons/PostgreSQL-Light.svg" alt="SQL" className="tech-icon" /> SQL
@@ -172,13 +171,17 @@ const TechSection = () => {
                             <button className="tech-btn">
                                 <img src="/stack icons/MongoDB.svg" alt="MG" className="tech-icon" /> MongoDB
                             </button>
-                        </div>
-                        <div className="tech-row">
                             <button className="tech-btn">
                                 <img src="/stack icons/Firebase-Light.svg" alt="FB" className="tech-icon" /> Firebase
                             </button>
                             <button className="tech-btn">
                                 <img src="/stack icons/SQLite.svg" alt="SQ" className="tech-icon" /> SQLite
+                            </button>
+                            <button className="tech-btn">
+                                <img src="/stack icons/Prisma.svg" alt="PR" className="tech-icon" /> Prisma
+                            </button>
+                            <button className="tech-btn">
+                                <img src="/stack icons/Supabase-Light.svg" alt="SB" className="tech-icon" /> Supabase
                             </button>
                         </div>
                     </div>
@@ -228,8 +231,8 @@ const TechSection = () => {
                                 { name: 'VS Code', icon: '/stack icons/VSCode-Light.svg' },
                                 { name: 'Docker', icon: '/stack icons/Docker.svg' },
                                 { name: 'NPM', icon: '/stack icons/Npm-Light.svg' },
-                                { name: 'Vercel', icon: '/stack icons/Vercel-Light.svg' },
-                                { name: 'Figma', icon: '/stack icons/Figma-Light.svg' },
+                                { name: 'Ubuntu', icon: '/stack icons/Ubuntu-Light.svg' },
+                                { name: 'Android Studio', icon: '/stack icons/AndroidStudio-Light.svg' },
                                 { name: 'Postman', icon: '/stack icons/Postman.svg' }
                             ].map((tool, index) => (
                                 <div key={index} className="tool-card">

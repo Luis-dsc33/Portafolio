@@ -4,12 +4,14 @@ import './App.css';
 
 // Componentes
 import BootSequence from './components/Terminal/BootSequence';
+import Taskbar from './components/Navigation/Taskbar';
 import TopBar from './components/Navigation/TopBar';
 import HeroProfile from './components/Sections/HeroProfile';
 import ProjectsExplorer from './components/Sections/ProjectsSection';
 import TechSection from './components/Sections/TechSection';
 import DesktopEnvironment from './components/Sections/DesktopEnvironment';
 import AboutSection from './components/Sections/AboutSection';
+import ContactSection from './components/Sections/ContactSection';
 
 // 1. IMPORTAREMOS LA NUEVA PÁGINA (La crearemos en el siguiente paso)
 import ProjectDetails from './components/Sections/ProjectDetails';
@@ -17,10 +19,10 @@ import useScrollReveal from './hooks/useScrollReveal';
 
 function App() {
   // --- ESTADOS DE LA ANIMACIÓN ---
-  const [hasStarted, setHasStarted] = useState(false);
-  const [step, setStep] = useState(-1);
-  const [isExpanding, setIsExpanding] = useState(false);
-  const [showPortfolio, setShowPortfolio] = useState(false);
+  const [hasStarted, setHasStarted] = useState(() => sessionStorage.getItem('booted') === 'true');
+  const [step, setStep] = useState(() => sessionStorage.getItem('booted') === 'true' ? 9 : -1);
+  const [isExpanding, setIsExpanding] = useState(() => sessionStorage.getItem('booted') === 'true');
+  const [showPortfolio, setShowPortfolio] = useState(() => sessionStorage.getItem('booted') === 'true');
 
   // --- ESTADOS DE LA SECCIÓN DE PROYECTOS ---
   const [activeFilter, setActiveFilter] = useState('Todos');
@@ -59,10 +61,37 @@ function App() {
   ];
 
   // --- FUNCIONES ---
-  const handlePowerOn = () => {
+  const handlePowerOn = (e) => {
+    if (e) e.stopPropagation();
     if (hasStarted) return;
     setHasStarted(true);
   };
+
+  // Efecto para saltar la animación (Click, Enter o Espacio)
+  useEffect(() => {
+    if (showPortfolio) return;
+
+    const handleSkip = (e) => {
+      // Permitir que el botón de encendido se clickee sin que esto lo intercepte como un salto automático,
+      // ya que e.stopPropagation() en handlePowerOn evita que el evento llegue aquí.
+      // Si el click no es en el botón de encendido (o si es tecla Enter/Espacio), saltamos la animación.
+      if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+      
+      setHasStarted(true);
+      setStep(9);
+      setIsExpanding(true);
+      setShowPortfolio(true);
+      sessionStorage.setItem('booted', 'true');
+    };
+
+    window.addEventListener('click', handleSkip);
+    window.addEventListener('keydown', handleSkip);
+
+    return () => {
+      window.removeEventListener('click', handleSkip);
+      window.removeEventListener('keydown', handleSkip);
+    };
+  }, [showPortfolio]);
 
   useEffect(() => {
     if (!hasStarted || showPortfolio) return;
@@ -85,7 +114,10 @@ function App() {
         setIsExpanding(true);
       }, 1100),
 
-      setTimeout(() => setShowPortfolio(true), 1500),
+      setTimeout(() => {
+        sessionStorage.setItem('booted', 'true');
+        setShowPortfolio(true);
+      }, 1500),
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -126,6 +158,13 @@ function App() {
 
         <TechSection />
         
+        <div className="retro-separator-container separator-tech reveal">
+          <hr className="retro-separator" />
+          <span className="separator-text">C:\Archivos_de_programa\Contacto</span>
+        </div>
+
+        <ContactSection />
+        
         <DesktopEnvironment />
       </>
     );
@@ -143,15 +182,18 @@ function App() {
             ) : !showPortfolio ? (
               <BootSequence step={step} />
             ) : (
-              <div className="portfolio-wrapper fade-in-portfolio">
+              <>
+                <div className="portfolio-wrapper fade-in-portfolio">
 
-                {/* 4. AQUI DECLARAMOS LAS RUTAS */}
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/proyecto/:id" element={<ProjectDetails projectsData={projectsData} />} />
-                </Routes>
+                  {/* 4. AQUI DECLARAMOS LAS RUTAS */}
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/proyecto/:id" element={<ProjectDetails projectsData={projectsData} />} />
+                  </Routes>
 
-              </div>
+                  <Taskbar />
+                </div>
+              </>
             )}
 
           </div>

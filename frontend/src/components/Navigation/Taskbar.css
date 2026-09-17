@@ -1,0 +1,89 @@
+.retro-taskbar {
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+    height: 55px;
+    background-color: #003a35;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+    background-size: 4px 4px;
+    border-top: 2px solid #eedfb5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-family: 'VT323', monospace;
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+.taskbar-left, .taskbar-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.start-button {
+    height: 40px;
+    background-color: #eedfb5;
+    border: 2px solid #fff;
+    border-right-color: #000;
+    border-bottom-color: #000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #000;
+    box-shadow: inset 1px 1px 0px #eedfb5, inset -1px -1px 0px #888;
+}
+
+.start-button:active {
+    border: 2px solid #000;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    box-shadow: inset 1px 1px 0px #888, inset -1px -1px 0px #eedfb5;
+    padding-top: 2px;
+    padding-left: 9px;
+}
+
+.start-icon {
+    width: 24px;
+    height: 24px;
+    image-rendering: pixelated;
+    filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.3));
+}
+
+.taskbar-divider {
+    width: 2px;
+    height: 38px;
+    background-color: #004c46;
+    border-right: 1px solid #eedfb5;
+    margin: 0 15px;
+}
+
+.taskbar-text {
+    color: #eedfb5;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.heart-text {
+    color: #eedfb5;
+}
+
+.taskbar-icon {
+    font-size: 1.4rem;
+    color: #eedfb5;
+    margin-right: 8px;
+}
+
+.taskbar-time {
+    color: #eedfb5;
+    font-size: 1.5rem;
+    padding: 0 5px;
+}

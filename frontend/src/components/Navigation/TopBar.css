@@ -1,20 +1,26 @@
 /* --- BARRA DE TÍTULO PRINCIPAL (Windows) --- */
 .main-window-titlebar {
-  background-color: #00665c;
-  height: 28px;
+  background-color: #00403a;
+  height: 38px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 4px;
+  padding: 2px 8px;
   position: sticky;
   top: 0;
   z-index: 1000; 
 }
 
+.titlebar-right button {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 14px !important;
+}
+
 /* --- ICONOS --- */
 .icon-titlebar-logo {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   margin-left: 2px;
   image-rendering: pixelated;
 }
@@ -48,7 +54,7 @@
   background-size: 4px 4px;
 
   position: sticky;
-  top: 28px; 
+  top: 38px; 
   z-index: 999; 
 }
 
@@ -61,7 +67,7 @@
 .logo-text {
   font-family: 'Silkscreen', cursive;
   font-size: clamp(1.4rem, 3vw, 2.2rem);
-  color: #3a6b52;
+  color: #214a36;
   font-weight: bold;
   letter-spacing: 0px;
 }

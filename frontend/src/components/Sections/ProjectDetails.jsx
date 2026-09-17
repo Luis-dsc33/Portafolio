@@ -60,7 +60,7 @@ Orquestación de operaciones de base de datos a través de lenguaje natural (voz
                 "Punto de Venta (POS): Catálogo visual, carrito dinámico y checkout rápido con deducción atómica de stock.",
                 "Arquitectura de Roles (RBAC): Control de acceso segmentado entre Administrador y Vendedor/POS."
             ],
-            repoLink: 'https://github.com/LuisPozole/Inventory_360'
+            repoLink: 'https://github.com/Luis-dsc33/Inventory_360'
         },
         cashflow: {
             gallery: [
@@ -104,7 +104,7 @@ La elección de Flutter como framework principal permite construir un producto d
                 "Metas de Ahorro: Seguimiento interactivo para objetivos a largo plazo (ej. Casa, Viaje).",
                 "Asesor Financiero IA (Gemini): Lectura del estado de cuenta y consejos dinámicos o alertas ante desvíos de presupuesto."
             ],
-            repoLink: '#'
+            repoLink: 'https://github.com/Luis-dsc33/Finanzas-en-pareja'
         },
         uhc: {
             gallery: [
@@ -164,7 +164,7 @@ En el Frontend utiliza React, Vite y Tailwind CSS para una SPA rápida y respons
                 "Dashboards en Tiempo Real (Telemetría): Interfaces dinámicas con cuenta regresiva, estado del torneo y 'mecánicas' activas en el evento.",
                 "Flujos de Autenticación Segura: Acceso protegido basado en roles. Solo capitanes o administradores pueden interactuar con funciones de gestión."
             ],
-            repoLink: '#'
+            repoLink: 'https://github.com/Luis-dsc33/UHC_NOVA_Deployment'
         },
         lira: {
             gallery: [
@@ -194,7 +194,7 @@ Mucho más que un simple bot conversacional, Lira funciona como una arquitectura
                 "Gestión de Listas Inteligente: CRUD completo de listas temáticas vía lenguaje natural: agregar ítems, ver listas, borrar ítems individuales, eliminar listas completas.",
                 "Router de Intenciones NLU: Clasificador de intenciones zero-shot con Gemini que analiza mensajes junto con el historial de contexto para determinar la acción correcta entre 10+ intenciones posibles."
             ],
-            repoLink: '#'
+            repoLink: 'https://github.com/Luis-dsc33/lira-asistente'
         }
         // Aquí agregaremos 'mes', etc., en los siguientes pasos
     };
