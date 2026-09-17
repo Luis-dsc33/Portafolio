@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 /**
  * Sección Hero del portafolio: foto de perfil, título, descripción y CTAs.
@@ -7,6 +8,8 @@ import React from 'react';
  * @param {Function} scrollToSection - Función para hacer scroll suave a una sección
  */
 function HeroProfile({ scrollToSection }) {
+  const { t } = useLanguage();
+
   return (
     <>
       <main className="main-content reveal" id="inicio">
@@ -19,20 +22,17 @@ function HeroProfile({ scrollToSection }) {
           </div>
 
           <div className="text-section">
-            <h1 className="main-title">Hola, Soy Luis</h1>
-            <h2 className="sub-title">Pasante de Ingenieria en Desarrollo y Gestion de Software</h2>
+            <h1 className="main-title">{t('hero_greeting')}</h1>
+            <h2 className="sub-title">{t('hero_role')}</h2>
             <hr className="pixel-divider" />
             <p className="intro-text">
-              Desarrollador Full-Stack apasionado por construir soluciones sólidas de<br />
-              extremo a extremo. Transformo ideas en aplicaciones web y multiplataforma<br />
-              usando React, Node.js y Flutter. Disfruto diseñar arquitecturas<br />
-              escalables respaldadas por bases de datos robustas y despliegues con Docker.
+              {t('hero_bio')}
             </p>
 
             <div className="action-buttons">
-              <button className="btn-retro btn-primary" onClick={() => scrollToSection('proyectos')}>▶ Ver proyectos</button>
-              <button className="btn-retro btn-secondary" onClick={() => scrollToSection('contacto')}>✉ Contactar</button>
-              <button className="btn-retro btn-secondary" onClick={() => window.open('/cv.pdf', '_blank', 'noopener,noreferrer')}>📄 CV</button>
+              <button className="btn-retro btn-primary" onClick={() => scrollToSection('proyectos')}>{t('hero_btn_projects')}</button>
+              <button className="btn-retro btn-secondary" onClick={() => scrollToSection('contacto')}>{t('hero_btn_contact')}</button>
+              <button className="btn-retro btn-secondary" onClick={() => window.open(t('hero_cv_url'), '_blank', 'noopener,noreferrer')}>{t('hero_btn_cv')}</button>
             </div>
           </div>
         </div>

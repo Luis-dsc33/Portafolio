@@ -1,6 +1,10 @@
 import React from 'react';
 import Timeline from './Timeline';
+import { useLanguage } from '../../context/LanguageContext';
+
 const AboutSection = () => {
+    const { t } = useLanguage();
+
     return (
         <section className="about-section reveal" id="sobre-mi">
 
@@ -13,7 +17,7 @@ const AboutSection = () => {
 
             <div className="about-header">
                 <span className="header-icon" aria-hidden="true">🕵️‍♂️</span>
-                <h2 className="main-title">Sobre mí</h2>
+                <h2 className="main-title">{t('about_title')}</h2>
                 <hr className="pixel-divider" />
             </div>
 
@@ -48,16 +52,16 @@ const AboutSection = () => {
 
                                 <div className="profile-stats">
                                     <div className="stat-row">
-                                        <span className="stat-label">Edad:</span>
+                                        <span className="stat-label">{t('about_age')}</span>
                                         <span className="stat-value">22</span>
                                     </div>
                                     <div className="stat-row">
-                                        <span className="stat-label">Ubicación:</span>
-                                        <span className="stat-value">Qurétaro</span>
+                                        <span className="stat-label">{t('about_location')}</span>
+                                        <span className="stat-value">Querétaro</span>
                                     </div>
                                     <div className="stat-row">
-                                        <span className="stat-label">Inglés:</span>
-                                        <span className="stat-value">B2 (Certificado Enlgish score)</span>
+                                        <span className="stat-label">{t('about_english')}</span>
+                                        <span className="stat-value">{t('about_english_val')}</span>
                                     </div>
                                 </div>
                             </div>
@@ -65,19 +69,15 @@ const AboutSection = () => {
                             {/* Columna Derecha: Biografía y Logros */}
                             <div className="profile-main">
                                 <h3 className="profile-name">Luis Enrique De Santiago Colin</h3>
-                                <h4 className="profile-role">&gt; T.S.U. | Ing. en Desarrollo y Gestión de Software (En proceso de titulación) @ UTSJR</h4>
+                                <h4 className="profile-role">{t('about_role')}</h4>
 
                                 <div className="terminal-text-box">
                                     <p className="bio-paragraph">
-                                        Soy pasante de Ingeniería en Desarrollo y Gestión de Software y desarrollador web y móvil,
-                                        enfocado en seguir creciendo como Full-Stack. Me gusta participar en todo el proceso de construcción
-                                        de un producto: entender una necesidad, plantear una solución y convertirla en una experiencia
-                                        clara y funcional para el usuario.
+                                        {t('about_p1')}
                                     </p>
 
                                     <p className="bio-paragraph">
-                                        Me considero una persona curiosa, autodidacta y responsable. Disfruto enfrentando retos complejos
-                                        siempre con disposición para aprender nuevas herramientas y mejorar con cada proyecto.
+                                        {t('about_p2')}
                                     </p>
                                 </div>
                             </div>

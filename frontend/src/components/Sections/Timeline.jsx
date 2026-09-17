@@ -1,33 +1,36 @@
 import React from 'react';
 import './Timeline.css';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Timeline = () => {
+    const { t } = useLanguage();
+
     const timelineData = [
         {
             id: 'edu1',
             type: 'FORMACION.02.LOG',
-            dateText: "SEP 2025 -\nDIC 2026",
-            title: 'Ingeniería en Desarrollo de Software',
-            subtitle: 'Universidad Tecnológica de San Juan del Río',
-            description: 'Continuación de mi formación profesional enfocada en el desarrollo, metodologías ágiles, bases de datos y arquitectura tecnológica avanzada.',
+            dateText: `${t('tl_sep')} 2025 -\n${t('tl_dec')} 2026`,
+            title: t('tl_edu1_title'),
+            subtitle: t('tl_edu1_subtitle'),
+            description: t('tl_edu1_desc'),
             nodeColor: '#00403a' // green for most recent/current
         },
         {
             id: 'exp1',
             type: 'EXPERIENCIA.01.LOG',
-            dateText: "MAY 2025 -\nAGO 2025",
-            title: 'Operador de Red',
-            subtitle: 'CNOC Telmex - Coppel',
-            description: 'Monitoreo, diagnóstico y gestión de eventos de red para la infraestructura crítica. Brindé soporte de primer nivel LAN/WAN asegurando alta disponibilidad. Administración de servicios TCP/IP (DNS, DHCP, routers, switches).',
+            dateText: `${t('tl_may')} 2025 -\n${t('tl_aug')} 2025`,
+            title: t('tl_exp_title'),
+            subtitle: t('tl_exp_subtitle'),
+            description: t('tl_exp_desc'),
             nodeColor: '#8b2a2a' // red for past
         },
         {
             id: 'edu2',
             type: 'FORMACION.01.LOG',
-            dateText: "SEP 2023 -\nAGO 2025",
-            title: 'T.S.U. en Tecnologías de la Información',
-            subtitle: 'Universidad Tecnológica de San Juan del Río',
-            description: 'Formación universitaria técnica consolidando bases sólidas en desarrollo de software, análisis de sistemas y gestión de infraestructuras.',
+            dateText: `${t('tl_sep')} 2023 -\n${t('tl_aug')} 2025`,
+            title: t('tl_edu2_title'),
+            subtitle: t('tl_edu2_subtitle'),
+            description: t('tl_edu2_desc'),
             nodeColor: '#8b2a2a' // red
         }
     ];

@@ -13,11 +13,14 @@ import DesktopEnvironment from './components/Sections/DesktopEnvironment';
 import AboutSection from './components/Sections/AboutSection';
 import ContactSection from './components/Sections/ContactSection';
 
-// 1. IMPORTAREMOS LA NUEVA PÁGINA (La crearemos en el siguiente paso)
+// 1. IMPORTAREMOS LA NUEVA PÁGINA Y EL CONTEXTO
 import ProjectDetails from './components/Sections/ProjectDetails';
 import useScrollReveal from './hooks/useScrollReveal';
+import { useLanguage } from './context/LanguageContext';
 
 function App() {
+  const { t } = useLanguage();
+  // ... existing code ...
   // --- ESTADOS DE LA ANIMACIÓN ---
   const [hasStarted, setHasStarted] = useState(() => sessionStorage.getItem('booted') === 'true');
   const [step, setStep] = useState(() => sessionStorage.getItem('booted') === 'true' ? 9 : -1);
@@ -32,21 +35,21 @@ function App() {
     {
       id: 'inventory', name: 'Inventory_360.exe', category: 'Web', icon: '⚙️',
       title: 'Inventory 360', type: 'SaaS',
-      desc: 'Plataforma SaaS integral de gestión de inventarios y punto de venta con IA Multimodal (Google Gemini 2.5 Flash).',
+      desc: t('inv_short'),
       img: '/proyects/inv.360/02_dashboard_kpis.png',
       tech: ['React', 'Node.js', 'Express', 'Prisma', 'MongoDB', 'Gemini AI']
     },
     {
       id: 'lira', name: 'Lira_AILA.exe', category: 'Backend', icon: '🤖',
       title: 'Lira AI Assistant', type: 'Backend',
-      desc: 'Asistente de IA asíncrono construido con Node.js, la API de Google Gemini y bases de datos MongoDB.',
+      desc: t('lira_short'),
       img: '/proyects/lira/reminder.jpg',
       tech: ['Node.js', 'Express.js', 'MongoDB', 'Gemini AI', 'whatsapp-web.js', 'Docker', 'chrono-node']
     },
     {
       id: 'uhc', name: 'UHC_NOVA.exe', category: 'Web', icon: '🎮',
       title: 'UHC Nova', type: 'Full-Stack',
-      desc: 'Plataforma Full-Stack para la gestión de torneos de e-sports y eventos interactivos de Minecraft.',
+      desc: t('uhc_short'),
       img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=UHC+App',
       tech: ['React', 'Node.js', 'Express', 'Prisma', 'Tailwind CSS', 'Vite']
     },
@@ -54,7 +57,7 @@ function App() {
     {
       id: 'cashflow', name: 'CashFlow.apk', category: 'Mobile', icon: '📱',
       title: 'CashFlow', type: 'Finanzas Personales',
-      desc: 'App móvil en Flutter para gestión de finanzas personales y compartidas con un asistente IA (Gemini).',
+      desc: t('cash_short'),
       img: '/proyects/cashflow/cashflow_preview.jpg',
       tech: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'Gemini AI']
     },
@@ -142,7 +145,7 @@ function App() {
 
         <div className="retro-separator-container separator-projects reveal">
           <hr className="retro-separator" />
-          <span className="separator-text">C:\Archivos_de_programa\Proyectos</span>
+          <span className="separator-text">{t('sep_projects')}</span>
         </div>
 
         <ProjectsExplorer
@@ -153,14 +156,14 @@ function App() {
 
         <div className="retro-separator-container separator-tech reveal">
           <hr className="retro-separator" />
-          <span className="separator-text">C:\Archivos_de_programa\Tecnologías</span>
+          <span className="separator-text">{t('sep_tech')}</span>
         </div>
 
         <TechSection />
         
         <div className="retro-separator-container separator-tech reveal">
           <hr className="retro-separator" />
-          <span className="separator-text">C:\Archivos_de_programa\Contacto</span>
+          <span className="separator-text">{t('sep_contact')}</span>
         </div>
 
         <ContactSection />
@@ -183,7 +186,7 @@ function App() {
               <BootSequence step={step} />
             ) : (
               <>
-                <div className="portfolio-wrapper fade-in-portfolio">
+                <div className="portfolio-wrapper fade-in-portfolio" id="portfolio-scroll-container">
 
                   {/* 4. AQUI DECLARAMOS LAS RUTAS */}
                   <Routes>

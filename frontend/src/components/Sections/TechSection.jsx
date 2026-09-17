@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const TechSection = () => {
+    const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState('Frontend');
 
     const frameworksData = {
@@ -27,7 +29,7 @@ const TechSection = () => {
         <section className="tech-section reveal" id="tecnologias">
             <div className="tech-header">
                 <span className="header-icon" aria-hidden="true">💾</span>
-                <h2 className="main-title">Tecnologías</h2>
+                <h2 className="main-title">{t('tech_title')}</h2>
                 <hr className="pixel-divider" />
             </div>
 
@@ -40,8 +42,8 @@ const TechSection = () => {
                         <div className="label-icon">{'</>'}</div>
                         <div className="label-text">
                             <span className="label-num">01 /</span>
-                            <h3>Lenguajes</h3>
-                            <p>La base de todo con lo que trabajo</p>
+                            <h3>{t('tech_lang')}</h3>
+                            <p>{t('tech_lang_desc')}</p>
                         </div>
                         {/* Doblez de esquina */}
                         <div className="label-fold"></div>
@@ -95,8 +97,8 @@ const TechSection = () => {
                         <div className="label-icon">{'>_'}</div>
                         <div className="label-text">
                             <span className="label-num">02 /</span>
-                            <h3>Frameworks</h3>
-                            <p>Aceleradores para crear software moderno y adaptable.</p>
+                            <h3>{t('tech_fw')}</h3>
+                            <p>{t('tech_fw_desc')}</p>
                         </div>
                         <div className="cassette-timer">120<br />min</div>
                     </div>
@@ -157,8 +159,8 @@ const TechSection = () => {
                         <div className="label-icon">{'🗄️'}</div>
                         <div className="label-text">
                             <span className="label-num">03 /</span>
-                            <h3>Bases de Datos</h3>
-                            <p>Almacenamiento seguro y estructurado.</p>
+                            <h3>{t('tech_db')}</h3>
+                            <p>{t('tech_db_desc')}</p>
                         </div>
                         <div className="quality-seal">Seal of<br/>Quality</div>
                     </div>
@@ -213,7 +215,7 @@ const TechSection = () => {
                                 <span className="cmd-icon">⌘</span>
                             </div>
                             <span className="board-num">03 /</span>
-                            <h3>Herramientas</h3>
+                            <h3>{t('tech_tools')}</h3>
                         </div>
 
                         <div className="header-stripes"></div>
@@ -258,7 +260,7 @@ const TechSection = () => {
                             <div className="f-groove"></div>
                         </div>
                         <div className="footer-tag-container">
-                            <div className="footer-tag">Mis aliadas del día a día</div>
+                            <div className="footer-tag">{t('tech_tools_desc')}</div>
                         </div>
                         <div className="footer-grooves right">
                             <div className="f-groove-small"></div>
