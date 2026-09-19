@@ -80,3 +80,172 @@
   display: flex;
   gap: 5px;
 }
+
+/* --- BOTÓN HAMBURGUESA (oculto en desktop) --- */
+.hamburger-btn {
+  display: none; /* Oculto en desktop */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background-color: #d4d0c8;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #404040;
+  border-right: 2px solid #404040;
+  cursor: pointer;
+  padding: 8px;
+  outline: none;
+}
+
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background-color: #1a1a1a;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Animación de la X cuando está abierto */
+.hamburger-line.open:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-line.open:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- OVERLAY DE FONDO MÓVIL --- */
+.mobile-menu-overlay {
+  display: none; /* Oculto en desktop */
+}
+
+/* ==========================================================================
+   RESPONSIVE: MENÚ HAMBURGUESA EN MÓVIL
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Compactar la barra de título */
+  .main-window-titlebar {
+    height: 30px;
+    padding: 2px 6px;
+  }
+
+  .titlebar-right button {
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 11px !important;
+  }
+
+  .icon-titlebar-logo {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* TopBar compacta */
+  .top-bar {
+    padding: 8px 16px;
+    top: 30px; /* Altura del titlebar compacto */
+    flex-direction: row; /* Override del App.css que lo pone column en 768px */
+    gap: 0;
+  }
+
+  .logo-section {
+    gap: 10px;
+  }
+
+  .icon-portfolio {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  /* Mostrar el botón hamburguesa */
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Menú de navegación como overlay a pantalla completa */
+  .nav-menu {
+    display: none; /* Oculto por defecto en móvil */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(234, 218, 189, 0.98);
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 4px 4px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    z-index: 10000;
+    animation: menuFadeIn 0.2s ease-out;
+  }
+
+  .nav-menu.nav-menu-open {
+    display: flex;
+  }
+
+  @keyframes menuFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Botones de nav grandes y táctiles */
+  .nav-menu .btn-retro {
+    width: 80%;
+    max-width: 300px;
+    justify-content: center;
+    font-size: 1.6rem;
+    padding: 14px 20px;
+    min-height: 52px;
+    gap: 12px;
+  }
+
+  .nav-menu .btn-retro .icon-nav {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav-menu .lang-toggle-btn {
+    margin-left: 0 !important;
+    margin-top: 10px;
+    width: auto;
+    font-size: 1.4rem;
+    padding: 10px 24px;
+  }
+
+  /* Overlay oscuro detrás del menú */
+  .mobile-menu-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .icon-portfolio {
+    width: 26px;
+    height: 26px;
+  }
+}

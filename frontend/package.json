@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "puppeteer": "^25.8.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-draggable": "^4.7.1",

@@ -87,3 +87,59 @@
     font-size: 1.5rem;
     padding: 0 5px;
 }
+
+/* ==========================================================================
+   RESPONSIVE: TASKBAR COMPACTA EN MÓVIL
+   ========================================================================== */
+@media (max-width: 768px) {
+    .retro-taskbar {
+        height: 42px;
+        padding: 0 8px;
+    }
+
+    .start-button {
+        height: 32px;
+        padding: 0 8px;
+        font-size: 1.3rem;
+        gap: 6px;
+    }
+
+    .start-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Ocultar el texto "Gracias por ver" en móvil */
+    .heart-text {
+        display: none;
+    }
+
+    /* Ocultar el divider que queda solo */
+    .taskbar-left .taskbar-divider {
+        display: none;
+    }
+
+    .taskbar-divider {
+        height: 28px;
+        margin: 0 8px;
+    }
+
+    .taskbar-time {
+        font-size: 1.2rem;
+    }
+
+    .taskbar-icon {
+        font-size: 1.1rem;
+        margin-right: 4px;
+    }
+}
+
+@media (max-width: 380px) {
+    .start-text {
+        display: none;
+    }
+
+    .start-button {
+        padding: 0 6px;
+    }
+}

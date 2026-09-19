@@ -1463,22 +1463,16 @@ body {
 }
 
 @media (max-width: 768px) {
-  .top-bar {
-    flex-direction: column;
-    gap: 12px;
-    padding: 12px 15px;
-  }
+  /* --- TopBar: Ahora manejado por TopBar.css con el menú hamburguesa --- */
+  /* Se elimina el flex-direction: column del top-bar aquí */
+  /* porque TopBar.css lo controla ahora */
 
-  .nav-menu {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
+  /* --- HERO SECTION --- */
   .main-content {
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
-    margin-top: 20px;
+    padding: 0 16px;
+    margin-top: 16px;
     text-align: center;
   }
 
@@ -1493,13 +1487,45 @@ body {
     align-items: center;
   }
 
+  .intro-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
   .action-buttons {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
+    width: 100%;
   }
 
+  .action-buttons .btn-retro {
+    margin-left: 0;
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    min-height: 44px;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  /* --- SEPARADORES --- */
+  .retro-separator-container {
+    margin-top: 60px;
+    margin-bottom: 25px;
+  }
+
+  .hanging-plant {
+    display: none;
+  }
+
+  .separator-text {
+    font-size: 1.2rem;
+    padding: 0 12px;
+  }
+
+  /* --- PROJECTS SECTION (Arcade) --- */
   .projects-section {
-    padding: 60px 20px;
+    padding: 40px 16px;
   }
 
   .explorer-toolbar {
@@ -1523,6 +1549,108 @@ body {
     transform: translateX(-50%);
     top: 100%;
     margin-top: 10px;
+  }
+
+  /* Arcade cabinet más compacto en móvil */
+  .arcade-cabinet {
+    padding: 16px;
+    border-radius: 14px 14px 24px 24px;
+    box-shadow:
+      0px 10px 0px #060d0b,
+      0px 16px 15px rgba(0, 0, 0, 0.5),
+      inset 0px 3px 6px rgba(255, 255, 255, 0.05);
+  }
+
+  .crt-screen {
+    min-height: auto;
+    border-radius: 16px;
+    border-width: 4px;
+  }
+
+  .screen-content {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .arcade-menu {
+    flex: none;
+    border-right: none;
+    border-bottom: 2px dashed #4caf7d;
+    padding-right: 0;
+    padding-bottom: 16px;
+  }
+
+  .menu-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  /* Filtros más grandes para toque */
+  .arcade-filters {
+    gap: 6px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+
+  .filter-btn {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    min-height: 40px;
+  }
+
+  .project-list {
+    gap: 8px;
+  }
+
+  .menu-item {
+    font-size: 1.2rem;
+    padding: 6px 4px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .insert-coin {
+    display: none;
+  }
+
+  /* Panel detalles más compacto */
+  .project-title {
+    font-size: 1.5rem;
+  }
+
+  .project-preview {
+    height: 140px;
+  }
+
+  .arcade-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .arcade-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 1.2rem;
+    padding: 10px 16px;
+  }
+
+  .tech-tags {
+    gap: 6px;
+  }
+
+  .arcade-tag {
+    font-size: 0.9rem;
+    padding: 3px 8px;
+  }
+
+  /* --- scroll-margin-top para el header compacto --- */
+  .main-content, .about-section, .tech-section, .contact-section {
+    scroll-margin-top: 80px;
   }
 }
 
@@ -2947,32 +3075,62 @@ body {
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
+  .about-section {
+    padding: 40px 16px;
+  }
+
   .profile-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .profile-sidebar {
     flex-direction: row;
     align-items: flex-start;
+    gap: 16px;
+  }
+
+  .avatar-frame {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
   }
 
   .profile-stats {
     flex: 1;
+    padding: 10px;
+  }
+
+  .stat-row {
+    font-size: 1rem;
+  }
+
+  .window-content {
+    padding: 20px 16px;
+  }
+
+  .window-titlebar {
+    padding: 4px 10px;
+  }
+
+  .window-title {
+    font-size: 1.2rem;
   }
 }
 
-@media (max-width: 600px) {
-  .about-section {
-    padding: 40px 20px;
-  }
-
+@media (max-width: 480px) {
   .profile-sidebar {
     flex-direction: column;
     align-items: center;
   }
 
+  .avatar-frame {
+    width: 130px;
+    height: 130px;
+  }
+
   .profile-name {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-align: center;
   }
 
@@ -2981,8 +3139,9 @@ body {
     text-align: center;
   }
 
-  .window-content {
-    padding: 20px;
+  .terminal-text-box {
+    padding: 14px;
+    font-size: 0.95rem;
   }
 }
 
@@ -3317,7 +3476,7 @@ body {
   .screen-content {
     flex-direction: column;
     padding: 20px;
-    overflow-y: auto;
+    /* Removed overflow-y: auto to prevent scroll trap on mobile */
   }
 
   .arcade-menu {
@@ -3333,7 +3492,8 @@ body {
   }
 
   .crt-screen {
-    height: 600px;
+    min-height: auto;
+    height: auto;
   }
 }
 
@@ -3992,6 +4152,7 @@ body {
 @media (max-width: 768px) {
   .tools-grid {
     grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
   }
   
   .projects-grid {
@@ -3999,7 +4160,7 @@ body {
   }
 
   .tech-section, .projects-section {
-    padding: 40px 20px !important;
+    padding: 40px 16px !important;
   }
 
   .main-title {
@@ -4010,15 +4171,268 @@ body {
     width: 100% !important;
     min-width: auto !important;
   }
+
+  /* --- CONTACT SECTION MOBILE --- */
+  .contact-section {
+    padding: 40px 16px;
+  }
+
+  .contact-cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .contact-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: auto;
+    min-height: auto;
+  }
+
+  /* El tab decorativo a la izquierda estorba en móvil */
+  .contact-card::before {
+    display: none;
+  }
+
+  .contact-body {
+    padding: 24px 20px;
+  }
+
+  .contact-icon-wrapper {
+    height: 100px;
+    margin-bottom: 12px;
+  }
+
+  .contact-pixel-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .pixel-envelope {
+    font-size: 5rem;
+  }
+
+  .contact-text {
+    font-size: 1rem;
+    word-break: break-all;
+  }
+
+  .contact-btn {
+    min-height: 44px;
+    font-size: 1.3rem;
+    padding: 8px 20px;
+  }
+
+  /* --- TOOLS BOARD MOBILE --- */
+  .tools-board {
+    margin: 40px auto 0;
+  }
+
+  .pegboard-area {
+    padding: 20px 16px;
+    background-size: 30px 30px;
+  }
+
+  .board-header {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .board-title {
+    font-size: 1.2rem;
+    gap: 8px;
+  }
+
+  .header-stripes {
+    display: none;
+  }
+
+  .tool-card {
+    padding: 25px 14px 14px;
+  }
+
+  .tool-name {
+    font-size: 1.1rem;
+  }
+
+  .footer-tag {
+    font-size: 0.95rem;
+    padding: 4px 16px;
+  }
+
+  /* --- RETRO CARDS MOBILE (Tech section) --- */
+  .retro-card {
+    padding: 20px;
+    border-radius: 16px 14px 20px 18px;
+  }
+
+  .card-label {
+    padding: 14px 14px;
+    gap: 12px;
+  }
+
+  .label-icon {
+    width: 40px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .label-text h3 {
+    font-size: 1.4rem;
+  }
+
+  .tech-btn {
+    padding: 8px 14px;
+    font-size: 1.2rem;
+    gap: 8px;
+  }
+
+  .tech-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Casete tabs más compactos */
+  .cassette-tabs {
+    margin-top: 12px;
+  }
+
+  .tabs-container {
+    gap: 6px;
+    padding: 6px 8px;
+  }
+
+  .tab-btn {
+    padding: 6px 12px 5px;
+    font-size: 1rem;
+  }
+
+  .cassette-spools {
+    height: 70px;
+    padding: 0 25px;
+  }
+
+  .spool {
+    width: 34px;
+    height: 34px;
+  }
+
+  .spool:first-child::before {
+    width: 60px;
+    height: 60px;
+  }
+
+  .spool:last-child::before {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tape-window {
+    width: 120px;
+    height: 38px;
+  }
+
+  /* Floppy details */
+  .floppy-card {
+    padding-bottom: 80px;
+  }
+
+  .floppy-bottom {
+    height: 80px;
+  }
+
+  .floppy-slider {
+    width: 100px;
+    height: 70px;
+  }
+
+  /* Cartridge details */
+  .cartridge-grooves {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .groove {
+    width: 12px;
+    height: 35px;
+  }
+
+  /* --- PROJECT DETAILS PAGE MOBILE --- */
+  .details-content {
+    padding: 20px 16px;
+  }
+
+  .gallery-main-view {
+    height: 250px;
+  }
+
+  .tech-belt {
+    padding-left: 0;
+  }
+
+  .big-title {
+    font-size: 1.6rem;
+  }
+
+  .section-header-retro {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* --- MODAL MOBILE --- */
+  .modal-content-scroll {
+    padding: 20px;
+  }
+
+  .modal-main-title {
+    font-size: 1.8rem;
+  }
+
+  .modal-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 480px) {
   .tools-grid {
     grid-template-columns: 1fr !important;
   }
+
+  .photo-frame {
+    width: 150px;
+    height: 150px;
+  }
+
+  .tech-section .main-title {
+    font-size: 2.2rem !important;
+  }
+
+  /* Aún más compacto */
+  .contact-icon-wrapper {
+    height: 80px;
+    margin-bottom: 8px;
+  }
+
+  .contact-pixel-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .pixel-envelope {
+    font-size: 4rem;
+  }
 }
 
-/* Scroll Offset Fix */
-.main-content, .about-section, .tech-section, .contact-section {
-  scroll-margin-top: 130px;
-}
+/* Scroll Offset Fix — Desktop */
+@media (min-width: 769px) {
+  .main-content, .about-section, .tech-section, .contact-section {
+    scroll-margin-top: 130px;
+  }
+}
