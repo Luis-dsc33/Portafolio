@@ -34,7 +34,6 @@ const TechSection = () => {
             </div>
 
             <div className="tech-cards-container">
-                {/* --- TARJETA 1: DISQUETE (Lenguajes) --- */}
                 <div className="retro-card floppy-card">
                     <div className="card-divider-line"></div>
 
@@ -45,12 +44,10 @@ const TechSection = () => {
                             <h3>{t('tech_lang')}</h3>
                             <p>{t('tech_lang_desc')}</p>
                         </div>
-                        {/* Doblez de esquina */}
                         <div className="label-fold"></div>
                     </div>
 
                     <div className="card-tech-area">
-                        {/* Fila 1 */}
                         <div className="tech-row">
                             <button className="tech-btn">
                                 <img src="/stack icons/JavaScript.svg" alt="JS" className="tech-icon" /> JavaScript
@@ -62,7 +59,6 @@ const TechSection = () => {
                                 <img src="/stack icons/Python-Light.svg" alt="PY" className="tech-icon" /> Python
                             </button>
                         </div>
-                        {/* Fila 2 */}
                         <div className="tech-row">
                             <button className="tech-btn">
                                 <img src="/stack icons/Dart-Light.svg" alt="Dart" className="tech-icon" /> Dart
@@ -72,8 +68,6 @@ const TechSection = () => {
                             </button>
                         </div>
                     </div>
-
-                    {/* DETALLES REALISTAS DEL DISQUETE */}
                     <div className="floppy-bottom">
                         <div className="floppy-hole"></div>
                         <div className="floppy-slider">
@@ -85,8 +79,6 @@ const TechSection = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* --- TARJETA 2: CASETE (Frameworks) --- */}
                 <div className="retro-card cassette-card">
                     <span className="corner-screw corner-tl">✕</span>
                     <span className="corner-screw corner-tr">✕</span>
@@ -102,8 +94,6 @@ const TechSection = () => {
                         </div>
                         <div className="cassette-timer">120<br />min</div>
                     </div>
-
-                    {/* DETALLES REALISTAS DEL CASETE */}
                     <div className="cassette-spools">
                         <div className="spool"></div>
                         <div className="tape-window">
@@ -144,10 +134,7 @@ const TechSection = () => {
                         <span className="tape-icon">↻</span>
                     </div>
                 </div>
-
-                {/* --- TARJETA 3: CARTUCHO (Bases de Datos) --- */}
                 <div className="retro-card cartridge-card">
-                    {/* Detalles de agarre del cartucho */}
                     <div className="cartridge-grooves">
                         <div className="groove"></div>
                         <div className="groove"></div>
@@ -197,17 +184,12 @@ const TechSection = () => {
                     </div>
                 </div>
             </div>
-
-            {/* --- SECCIÓN DE HERRAMIENTAS (Pegboard) --- */}
             <div className="tools-board">
-                {/* Borde exterior retro */}
                 <div className="board-outer-frame">
                     <div className="board-header">
                         <span className="board-screw left">
                             <span className="screw-line"></span>
                         </span>
-                        
-                        {/* Detalles de rayas horizontales del header */}
                         <div className="header-stripes"></div>
                         
                         <div className="board-title">
@@ -241,7 +223,6 @@ const TechSection = () => {
                                     <div className="tool-pin">
                                         <div className="pin-hole"></div>
                                     </div>
-                                    {/* Agujeros en las esquinas superiores */}
                                     <span className="card-hole top-left"></span>
                                     <span className="card-hole top-right"></span>
 

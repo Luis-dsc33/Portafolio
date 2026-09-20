@@ -5,7 +5,7 @@ const Taskbar = () => {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
-        // Actualiza el reloj cada minuto
+        
         const timer = setInterval(() => setTime(new Date()), 60000);
         return () => clearInterval(timer);
     }, []);

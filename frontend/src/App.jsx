@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-// Componentes
+
 import BootSequence from './components/Terminal/BootSequence';
 import Taskbar from './components/Navigation/Taskbar';
 import TopBar from './components/Navigation/TopBar';
@@ -13,24 +13,22 @@ import DesktopEnvironment from './components/Sections/DesktopEnvironment';
 import AboutSection from './components/Sections/AboutSection';
 import ContactSection from './components/Sections/ContactSection';
 
-// 1. IMPORTAREMOS LA NUEVA PÁGINA Y EL CONTEXTO
 import ProjectDetails from './components/Sections/ProjectDetails';
 import useScrollReveal from './hooks/useScrollReveal';
 import { useLanguage } from './context/LanguageContext';
 
 function App() {
   const { t } = useLanguage();
-  // ... existing code ...
-  // --- ESTADOS DE LA ANIMACIÓN ---
+  
   const [hasStarted, setHasStarted] = useState(() => sessionStorage.getItem('booted') === 'true');
   const [step, setStep] = useState(() => sessionStorage.getItem('booted') === 'true' ? 9 : -1);
   const [isExpanding, setIsExpanding] = useState(() => sessionStorage.getItem('booted') === 'true');
   const [showPortfolio, setShowPortfolio] = useState(() => sessionStorage.getItem('booted') === 'true');
 
-  // --- ESTADOS DE LA SECCIÓN DE PROYECTOS ---
+  
   const [activeFilter, setActiveFilter] = useState('Todos');
 
-  // Tu lista de proyectos (Añadiremos más detalles para la vista completa después)
+  
   const projectsData = [
     {
       id: 'inventory', name: 'Inventory_360.exe', category: 'Web', icon: '⚙️',
@@ -50,7 +48,7 @@ function App() {
       id: 'uhc', name: 'UHC_NOVA.exe', category: 'Web', icon: '🎮',
       title: 'UHC Nova', type: 'Full-Stack',
       desc: t('uhc_short'),
-      img: 'https://via.placeholder.com/150x250/d4d0c8/000000?text=UHC+App',
+      img: '/proyects/UHC_NOVA/homepage.png',
       tech: ['React', 'Node.js', 'Express', 'Prisma', 'Tailwind CSS', 'Vite']
     },
 
@@ -63,21 +61,21 @@ function App() {
     },
   ];
 
-  // --- FUNCIONES ---
+  
   const handlePowerOn = (e) => {
     if (e) e.stopPropagation();
     if (hasStarted) return;
     setHasStarted(true);
   };
 
-  // Efecto para saltar la animación (Click, Enter o Espacio)
+  
   useEffect(() => {
     if (showPortfolio) return;
 
     const handleSkip = (e) => {
-      // Permitir que el botón de encendido se clickee sin que esto lo intercepte como un salto automático,
-      // ya que e.stopPropagation() en handlePowerOn evita que el evento llegue aquí.
-      // Si el click no es en el botón de encendido (o si es tecla Enter/Espacio), saltamos la animación.
+      
+      
+      
       if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
 
       setHasStarted(true);
@@ -131,7 +129,6 @@ function App() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // 2. CREAMOS UN COMPONENTE "HOME" PARA AGRUPAR EL PORTAFOLIO PRINCIPAL
   const Home = () => {
     useScrollReveal();
 
@@ -174,7 +171,6 @@ function App() {
   };
 
   return (
-    // 3. ENVOLVEMOS LA APLICACIÓN CON BROWSER ROUTER
     <BrowserRouter>
       <div className="desktop-environment">
         <div className="pixel-art-scene">
@@ -189,7 +185,6 @@ function App() {
                 <>
                   <div className="portfolio-wrapper fade-in-portfolio" id="portfolio-scroll-container">
 
-                    {/* 4. AQUI DECLARAMOS LAS RUTAS */}
                     <Routes>
                       <Route path="/" element={<Home />} />
                       <Route path="/proyecto/:id" element={<ProjectDetails projectsData={projectsData} />} />

@@ -1,16 +1,35 @@
-# React + Vite
+# Portafolio Retro OS
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Bienvenido a mi portafolio interactivo. Este proyecto está diseñado para simular un sistema operativo retro, ofreciendo una experiencia inmersiva para explorar mis proyectos de desarrollo de software, habilidades y experiencia.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Diseño Retro OS**: Interfaz inspirada en sistemas operativos clásicos.
+- **Boot Sequence Animada**: Secuencia de inicio retro al cargar la página.
+- **Explorador de Proyectos**: Ventanas interactivas para ver detalles de los proyectos.
+- **Soporte Multilingüe**: Disponible en varios idiomas (Español, Inglés).
+- **Responsive Design**: Adaptado para verse bien en dispositivos móviles y de escritorio.
 
-## React Compiler
+## Tecnologías Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React (SPA)
+- **Estilos**: CSS puro (Vanilla CSS) para un control preciso del diseño retro
+- **Animaciones**: CSS animations & transitions
+- **Routing**: React Router DOM
+- **Build Tool**: Vite
 
-## Expanding the Oxlint configuration
+## Cómo Ejecutar Localmente
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Clona el repositorio
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+
+## Contacto
+
+Puedes encontrar más información sobre mí o ponerte en contacto a través de la sección de contacto en el portafolio.

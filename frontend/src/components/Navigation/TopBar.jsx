@@ -2,20 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './TopBar.css';
 import { useLanguage } from '../../context/LanguageContext';
 
-/**
- * Barra de navegación principal del portafolio.
- * Incluye la barra de título de ventana (verde) y el menú de navegación.
- * En móvil se convierte en un menú hamburguesa colapsable.
- *
- * @param {Function} scrollToSection - Función para hacer scroll suave a una sección
- */
 function TopBar({ scrollToSection }) {
   const { language, toggleLanguage, t } = useLanguage();
   const [activeSection, setActiveSection] = useState('inicio');
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Escuchar el scroll dentro del contenedor del portafolio
+    
     const scrollContainer = document.getElementById('portfolio-scroll-container');
     if (!scrollContainer) return;
 
@@ -23,19 +16,19 @@ function TopBar({ scrollToSection }) {
       const sections = ['inicio', 'sobre-mi', 'proyectos', 'tecnologias', 'contacto'];
       let currentActive = 'inicio';
 
-      // Iteramos para ver qué sección está más cerca del borde superior
+      
       for (let sec of sections) {
         const el = document.getElementById(sec);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // 150px es un margen de tolerancia (por la altura del TopBar y un poco más)
+          
           if (rect.top <= 150) {
             currentActive = sec;
           }
         }
       }
 
-      // Si hemos llegado al final del contenedor, forzamos 'contacto'
+      
       const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
       if (Math.ceil(scrollContainer.scrollTop) >= maxScroll - 10) {
         currentActive = 'contacto';
@@ -45,19 +38,19 @@ function TopBar({ scrollToSection }) {
     };
 
     scrollContainer.addEventListener('scroll', handleScroll);
-    // Ejecutar una vez por si ya bajó
+    
     handleScroll();
 
     return () => scrollContainer.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Cerrar menú al cambiar de sección y navegar
+  
   const handleNavClick = (sectionId) => {
     scrollToSection(sectionId);
     setMenuOpen(false);
   };
 
-  // Cerrar menú si la pantalla se agranda (usuario rota o redimensiona)
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -68,7 +61,7 @@ function TopBar({ scrollToSection }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Bloquear scroll del body cuando el menú está abierto
+  
   useEffect(() => {
     const scrollContainer = document.getElementById('portfolio-scroll-container');
     if (menuOpen && scrollContainer) {
@@ -108,7 +101,6 @@ function TopBar({ scrollToSection }) {
           <span className="logo-text">PORTFOLIO<span className="logo-exe">.EXE</span></span>
         </div>
 
-        {/* Botón hamburguesa (solo visible en móvil via CSS) */}
         <button
           className="hamburger-btn"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -120,7 +112,6 @@ function TopBar({ scrollToSection }) {
           <span className={`hamburger-line ${menuOpen ? 'open' : ''}`}></span>
         </button>
 
-        {/* Menú de navegación: desktop inline, mobile overlay */}
         <nav className={`nav-menu ${menuOpen ? 'nav-menu-open' : ''}`}>
           {navItems.map((item) => (
             <button
@@ -138,7 +129,6 @@ function TopBar({ scrollToSection }) {
         </nav>
       </header>
 
-      {/* Overlay de fondo para cerrar el menú al tocar fuera */}
       {menuOpen && (
         <div
           className="mobile-menu-overlay"

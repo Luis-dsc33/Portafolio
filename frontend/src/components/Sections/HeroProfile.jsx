@@ -1,12 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 
-/**
- * Sección Hero del portafolio: foto de perfil, título, descripción y CTAs.
- * Incluye el separador retro y la planta colgante.
- *
- * @param {Function} scrollToSection - Función para hacer scroll suave a una sección
- */
+
 function HeroProfile({ scrollToSection }) {
   const { t } = useLanguage();
 
@@ -37,13 +32,9 @@ function HeroProfile({ scrollToSection }) {
           </div>
         </div>
       </main>
-
-      {/* --- SEPARADOR RETRO --- */}
       <div className="retro-separator-container">
         <hr className="retro-separator" />
         <span className="separator-text">C:\Usuarios\Luis\Sobre_Mi.txt</span>
-
-        {/* --- PLANTA COLGANTE --- */}
         <img src="/Colgante.png" alt="Enredadera colgante" className="hanging-plant" />
       </div>
     </>

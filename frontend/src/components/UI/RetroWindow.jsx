@@ -1,15 +1,5 @@
 import React from 'react';
 
-/**
- * Componente base reutilizable para ventanas estilo Windows 95/98.
- * 
- * @param {string} title - Texto de la barra de título
- * @param {string} titleBarColor - Color de fondo de la barra (default: #000080)
- * @param {string[]} controls - Controles a mostrar: 'minimize', 'maximize', 'close'
- * @param {React.ReactNode} menuBar - Nodo opcional para renderizar menú bajo la barra de título
- * @param {string} className - Clases CSS adicionales para el contenedor .window
- * @param {React.ReactNode} children - Contenido de la ventana
- */
 function RetroWindow({
   title,
   titleBarColor = '#000080',

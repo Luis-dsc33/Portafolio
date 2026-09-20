@@ -4,7 +4,7 @@ import { translations } from './translations';
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  // Use English by default as requested
+  
   const [language, setLanguage] = useState(() => {
     return localStorage.getItem('app_lang') || 'en';
   });

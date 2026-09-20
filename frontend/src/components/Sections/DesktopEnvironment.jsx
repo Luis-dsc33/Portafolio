@@ -2,10 +2,7 @@ import React from 'react';
 import Draggable from 'react-draggable';
 import RetroWindow from '../UI/RetroWindow';
 
-/**
- * Fondo decorativo con ventanas draggables (avión y notas) y la imagen del escritorio.
- * Componente autocontenido, sin props externas.
- */
+
 function DesktopEnvironment() {
   return (
     <aside className="desk-section reveal">

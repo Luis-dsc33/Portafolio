@@ -1,12 +1,6 @@
 import React from 'react';
 import './BootSequence.css';
 
-/**
- * Terminal de arranque con animación paso a paso.
- * Cada línea aparece cuando `step` alcanza su índice.
- *
- * @param {number} step - Paso actual de la animación (0-9)
- */
 function BootSequence({ step }) {
   return (
     <div className="term-body">
@@ -21,7 +15,7 @@ function BootSequence({ step }) {
         {step >= 7 && <div className="term-line term-success"> ✔ Container react_client_prod     Started</div>}
         {step >= 8 && <><br /><div className="term-line term-info">[systemd] Starting Cat Assistant Daemon (cat.service)... 🐈 OK</div></>}
         {step >= 9 && <><br /><div className="term-line term-cmd term-typing">luis@prod:~/app$ ./PORTFOLIO.EXE --mode=production</div></>}
-        {/* Cursor parpadeante */}
+
         <div className="term-cursor">█</div>
       </div>
     </div>

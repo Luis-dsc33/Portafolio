@@ -7,8 +7,6 @@ const AboutSection = () => {
 
     return (
         <section className="about-section reveal" id="sobre-mi">
-
-            {/* --- IMAGEN DECORATIVA DEL CAFÉ --- */}
             <img
                 src="/cafe.png"
                 alt="Taza de café retro"
@@ -22,7 +20,6 @@ const AboutSection = () => {
             </div>
 
             <div className="about-container">
-                {/* Ventana estilo UI Retro */}
                 <div className="retro-window profile-window">
 
                     <div className="window-titlebar">
@@ -36,8 +33,6 @@ const AboutSection = () => {
 
                     <div className="window-content">
                         <div className="profile-grid">
-
-                            {/* Columna Izquierda: Avatar y Stats */}
                             <div className="profile-sidebar">
                                 <div className="avatar-frame">
                                     <img
@@ -65,8 +60,6 @@ const AboutSection = () => {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Columna Derecha: Biografía y Logros */}
                             <div className="profile-main">
                                 <h3 className="profile-name">Luis Enrique De Santiago Colin</h3>
                                 <h4 className="profile-role">{t('about_role')}</h4>
@@ -86,8 +79,6 @@ const AboutSection = () => {
                     </div>
                 </div>
             </div>
-
-            {/* --- SECCIÓN LÍNEA DE TIEMPO (CV) --- */}
             <Timeline />
             
         </section>

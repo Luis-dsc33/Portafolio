@@ -71,8 +71,6 @@ const ProjectsSection = () => {
           <div className="scanlines"></div>
 
           <div className="screen-content">
-
-            {/* --- Panel Izquierdo: Menú y Filtros --- */}
             <div className="arcade-menu">
               <h3 className="menu-title">SELECT_STAGE</h3>
 
@@ -113,8 +111,6 @@ const ProjectsSection = () => {
 
               <div className="insert-coin">INSERT COIN TO PLAY</div>
             </div>
-
-            {/* --- Panel Derecho: Detalles del Proyecto --- */}
             <div className="arcade-details">
               {filteredProjects.length > 0 ? (
                 <>
@@ -184,7 +180,6 @@ const ProjectsSection = () => {
           </div>
         </div>
       </div>
-      {/* EL MODAL FUE ELIMINADO COMPLETAMENTE */}
     </section>
   );
 };

@@ -9,12 +9,12 @@ const ProjectDetails = ({ projectsData }) => {
 
     const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
-    // Buscamos la info básica en caso de necesitarla
+    
     const baseProject = projectsData.find(p => p.id === id) || projectsData[0];
 
-    // ============================================================================
-    // BASE DE DATOS DE PROYECTOS
-    // ============================================================================
+    
+    
+    
     const extendedData = {
         inventory: {
             gallery: [
@@ -181,7 +181,7 @@ const ProjectDetails = ({ projectsData }) => {
         }
     };
 
-    // Validamos si existe la información del proyecto en nuestro diccionario
+    
     const details = extendedData[id] || {
         gallery: [{ src: baseProject?.img || 'https://via.placeholder.com/800x450', caption: t('proj_det_preview') }],
         fullDescription: baseProject?.desc || t('proj_det_docs_wip'),
@@ -189,15 +189,13 @@ const ProjectDetails = ({ projectsData }) => {
         repoLink: '#'
     };
 
-    // Efecto para que la página siempre empiece desde arriba al cargar un proyecto
+    
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [id]);
 
     return (
         <div className="project-details-page">
-
-            {/* --- BARRA SUPERIOR DE NAVEGACIÓN --- */}
             <div className="details-topbar">
                 <button className="back-btn" onClick={() => navigate('/')}>
                     {t('proj_back')}
@@ -211,8 +209,6 @@ const ProjectDetails = ({ projectsData }) => {
             </div>
 
             <div className="details-content">
-
-                {/* --- SECCIÓN 01: VISOR DE IMÁGENES --- */}
                 <div className="detail-section">
                     <div className="section-header-retro">
                         <div className="section-number">01</div>
@@ -255,10 +251,6 @@ const ProjectDetails = ({ projectsData }) => {
                         </div>
                     </div>
                 </div>
-
-                {/* =========================================
-            SECCIÓN 02: TECNOLOGÍAS (STAGE.INI)
-            ========================================= */}
                 <div className="detail-section">
                     <div className="section-header-retro">
                         <div className="section-number">02</div>
@@ -337,10 +329,6 @@ const ProjectDetails = ({ projectsData }) => {
                         )}
                     </div>
                 </div>
-
-                {/* =========================================
-            SECCIÓN 03: DESCRIPCIÓN (README.TXT)
-            ========================================= */}
                 <div className="detail-section">
                     <div className="section-header-retro">
                         <div className="section-number">03</div>
@@ -358,15 +346,10 @@ const ProjectDetails = ({ projectsData }) => {
                             <span>{t('proj_det_help')}</span>
                         </div>
                         <div className="notepad-content">
-                            {/* Usamos pre-wrap para respetar los saltos de línea del string */}
                             <p style={{ whiteSpace: 'pre-wrap' }}>{details.fullDescription}</p>
                         </div>
                     </div>
                 </div>
-
-                {/* =========================================
-            SECCIÓN 04: CARACTERÍSTICAS
-            ========================================= */}
                 <div className="detail-section">
                     <div className="section-header-retro">
                         <div className="section-number">04</div>
@@ -387,10 +370,6 @@ const ProjectDetails = ({ projectsData }) => {
                         </div>
                     </div>
                 </div>
-
-                {/* =========================================
-            PIE DE PÁGINA
-            ========================================= */}
                 <div className="details-footer">
                     <button
                         className="retro-btn-green"

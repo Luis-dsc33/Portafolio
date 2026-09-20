@@ -13,7 +13,7 @@ const Timeline = () => {
             title: t('tl_edu1_title'),
             subtitle: t('tl_edu1_subtitle'),
             description: t('tl_edu1_desc'),
-            nodeColor: '#00403a' // green for most recent/current
+            nodeColor: '#00403a' 
         },
         {
             id: 'exp1',
@@ -22,7 +22,7 @@ const Timeline = () => {
             title: t('tl_exp_title'),
             subtitle: t('tl_exp_subtitle'),
             description: t('tl_exp_desc'),
-            nodeColor: '#8b2a2a' // red for past
+            nodeColor: '#8b2a2a' 
         },
         {
             id: 'edu2',
@@ -31,33 +31,27 @@ const Timeline = () => {
             title: t('tl_edu2_title'),
             subtitle: t('tl_edu2_subtitle'),
             description: t('tl_edu2_desc'),
-            nodeColor: '#8b2a2a' // red
+            nodeColor: '#8b2a2a' 
         }
     ];
 
     return (
         <div className="timeline-section">
             <div className="timeline-container">
-                {/* La línea principal que conecta todo */}
                 <div className="timeline-line"></div>
 
                 {timelineData.map((item, index) => (
                     <div className="timeline-item" key={item.id}>
-                        {/* Nodo y conector */}
                         <div 
                             className="timeline-node" 
                             style={{ borderColor: item.nodeColor }}
                         ></div>
-
-                        {/* Caja de fecha */}
                         <div className="timeline-date-box">
                             <span className="timeline-date-icon">📅</span>
                             <span className="timeline-date-text" style={{ whiteSpace: 'pre-line' }}>
                                 {item.dateText}
                             </span>
                         </div>
-
-                        {/* Tarjeta de contenido estilo ventana */}
                         <div className="timeline-card">
                             <div className="timeline-card-controls">
                                 <div className="timeline-win-btn">_</div>

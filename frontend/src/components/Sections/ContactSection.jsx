@@ -6,8 +6,6 @@ const ContactSection = () => {
     return (
         <section className="contact-section reveal" id="contacto">
             <div className="contact-cards-container">
-                
-                {/* Carta GitHub */}
                 <div className="contact-card github-contact">
                     <div className="contact-titlebar">
                         <span className="contact-title">GitHub</span>
@@ -24,8 +22,6 @@ const ContactSection = () => {
                         </a>
                     </div>
                 </div>
-
-                {/* Carta Correo */}
                 <div className="contact-card email-contact">
                     <div className="contact-titlebar">
                         <span className="contact-title">{t('contact_email_title')}</span>
@@ -42,8 +38,6 @@ const ContactSection = () => {
                         </a>
                     </div>
                 </div>
-
-                {/* Carta LinkedIn */}
                 <div className="contact-card linkedin-contact">
                     <div className="contact-titlebar">
                         <span className="contact-title">LinkedIn</span>
