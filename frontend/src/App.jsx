@@ -177,37 +177,40 @@ function App() {
     // 3. ENVOLVEMOS LA APLICACIÓN CON BROWSER ROUTER
     <BrowserRouter>
       <div className="desktop-environment">
-        <div className={`retro-monitor-bezel ${isExpanding ? 'monitor-fullscreen' : ''}`}>
-          <div className="retro-monitor-screen">
+        <div className="pixel-art-scene">
+          <div className={`mapped-screen ${isExpanding ? 'monitor-fullscreen' : ''}`}>
+            <div className="retro-monitor-screen">
 
-            {!hasStarted ? (
-              <div className="screen-off"></div>
-            ) : !showPortfolio ? (
-              <BootSequence step={step} />
-            ) : (
-              <>
-                <div className="portfolio-wrapper fade-in-portfolio" id="portfolio-scroll-container">
+              {!hasStarted ? (
+                <div className="screen-off"></div>
+              ) : !showPortfolio ? (
+                <BootSequence step={step} />
+              ) : (
+                <>
+                  <div className="portfolio-wrapper fade-in-portfolio" id="portfolio-scroll-container">
 
-                  {/* 4. AQUI DECLARAMOS LAS RUTAS */}
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/proyecto/:id" element={<ProjectDetails projectsData={projectsData} />} />
-                  </Routes>
+                    {/* 4. AQUI DECLARAMOS LAS RUTAS */}
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/proyecto/:id" element={<ProjectDetails projectsData={projectsData} />} />
+                    </Routes>
 
-                  <Taskbar />
-                </div>
-              </>
-            )}
+                    <Taskbar />
+                  </div>
+                </>
+              )}
 
-          </div>
-
-          <div className="monitor-chin">
-            <div className="monitor-logo">CATVISION</div>
-            <div className="monitor-controls">
-              <div className={`power-led ${hasStarted ? 'led-on' : ''}`}></div>
-              <button className="power-btn-physical" onClick={handlePowerOn}>⏻</button>
             </div>
           </div>
+
+          {!hasStarted && (
+            <>
+              <div className="power-btn-tooltip">
+                <span>PRESS START</span>
+              </div>
+              <button className="invisible-power-btn" onClick={handlePowerOn} aria-label="Turn on computer"></button>
+            </>
+          )}
         </div>
       </div>
     </BrowserRouter>

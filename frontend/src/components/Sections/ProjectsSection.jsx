@@ -18,7 +18,7 @@ const ProjectsSection = () => {
     },
     {
       id: 'lira',
-      title: 'LIRA (A.I.L.A)',
+      title: 'LIRA',
       type: 'AI Backend Assistant',
       category: 'backend',
       tech: ['Node.js', 'Express.js', 'MongoDB', 'Gemini AI', 'whatsapp-web.js', 'Docker', 'chrono-node'],
@@ -134,26 +134,26 @@ const ProjectsSection = () => {
                       <span className="tech-label">TECH_STACK:</span>
                       <div className="tech-tags">
                         {activeProject.tech.map((tech, index) => {
-                            let iconPath = null;
-                            const lowerT = tech.toLowerCase();
-                            if (lowerT.includes('react')) iconPath = '/stack icons/React-Light.svg';
-                            else if (lowerT.includes('node')) iconPath = '/stack icons/NodeJS-Light.svg';
-                            else if (lowerT.includes('express')) iconPath = '/stack icons/ExpressJS-Light.svg';
-                            else if (lowerT.includes('mongo')) iconPath = '/stack icons/MongoDB.svg';
-                            else if (lowerT.includes('docker')) iconPath = '/stack icons/Docker.svg';
-                            else if (lowerT.includes('flutter')) iconPath = '/stack icons/Flutter-Light.svg';
-                            else if (lowerT.includes('prisma')) iconPath = '/stack icons/Prisma.svg';
-                            else if (lowerT.includes('vite')) iconPath = '/stack icons/Vite-Light.svg';
-                            else if (lowerT.includes('tailwind')) iconPath = '/stack icons/TailwindCSS-Light.svg';
-                            else if (lowerT.includes('riverpod')) iconPath = '/stack icons/Dart-Light.svg';
-                            else if (lowerT.includes('firebase')) iconPath = '/stack icons/Firebase-Light.svg';
+                          let iconPath = null;
+                          const lowerT = tech.toLowerCase();
+                          if (lowerT.includes('react')) iconPath = '/stack icons/React-Light.svg';
+                          else if (lowerT.includes('node')) iconPath = '/stack icons/NodeJS-Light.svg';
+                          else if (lowerT.includes('express')) iconPath = '/stack icons/ExpressJS-Light.svg';
+                          else if (lowerT.includes('mongo')) iconPath = '/stack icons/MongoDB.svg';
+                          else if (lowerT.includes('docker')) iconPath = '/stack icons/Docker.svg';
+                          else if (lowerT.includes('flutter')) iconPath = '/stack icons/Flutter-Light.svg';
+                          else if (lowerT.includes('prisma')) iconPath = '/stack icons/Prisma.svg';
+                          else if (lowerT.includes('vite')) iconPath = '/stack icons/Vite-Light.svg';
+                          else if (lowerT.includes('tailwind')) iconPath = '/stack icons/TailwindCSS-Light.svg';
+                          else if (lowerT.includes('riverpod')) iconPath = '/stack icons/Dart-Light.svg';
+                          else if (lowerT.includes('firebase')) iconPath = '/stack icons/Firebase-Light.svg';
 
-                            return (
-                              <span key={index} className="arcade-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                                {iconPath && <img src={iconPath} alt={tech} style={{ width: '14px', height: '14px' }} />}
-                                {tech}
-                              </span>
-                            );
+                          return (
+                            <span key={index} className="arcade-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                              {iconPath && <img src={iconPath} alt={tech} style={{ width: '14px', height: '14px' }} />}
+                              {tech}
+                            </span>
+                          );
                         })}
                       </div>
                     </div>
