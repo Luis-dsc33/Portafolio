@@ -183,7 +183,7 @@ const ProjectDetails = ({ projectsData }) => {
 
     
     const details = extendedData[id] || {
-        gallery: [{ src: baseProject?.img || 'https://via.placeholder.com/800x450', caption: t('proj_det_preview') }],
+        gallery: [{ src: baseProject?.img || '/icons/logo.png', caption: t('proj_det_preview') }],
         fullDescription: baseProject?.desc || t('proj_det_docs_wip'),
         features: [t('proj_det_feat_wip')],
         repoLink: '#'
