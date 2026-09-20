@@ -79,7 +79,7 @@ function App() {
       // ya que e.stopPropagation() en handlePowerOn evita que el evento llegue aquí.
       // Si el click no es en el botón de encendido (o si es tecla Enter/Espacio), saltamos la animación.
       if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
-      
+
       setHasStarted(true);
       setStep(9);
       setIsExpanding(true);
@@ -138,9 +138,9 @@ function App() {
     return (
       <>
         <TopBar scrollToSection={scrollToSection} />
-        
+
         <HeroProfile scrollToSection={scrollToSection} />
-        
+
         <AboutSection />
 
         <div className="retro-separator-container separator-projects reveal">
@@ -160,14 +160,14 @@ function App() {
         </div>
 
         <TechSection />
-        
+
         <div className="retro-separator-container separator-tech reveal">
           <hr className="retro-separator" />
           <span className="separator-text">{t('sep_contact')}</span>
         </div>
 
         <ContactSection />
-        
+
         <DesktopEnvironment />
       </>
     );

@@ -52,8 +52,8 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: #ffffff;
-  background-image: 
-    repeating-linear-gradient(45deg, #dfdfdf 25%, transparent 25%, transparent 75%, #dfdfdf 75%, #dfdfdf), 
+  background-image:
+    repeating-linear-gradient(45deg, #dfdfdf 25%, transparent 25%, transparent 75%, #dfdfdf 75%, #dfdfdf),
     repeating-linear-gradient(45deg, #dfdfdf 25%, transparent 25%, transparent 75%, #dfdfdf 75%, #dfdfdf);
   background-position: 0 0, 2px 2px;
   background-size: 4px 4px;
@@ -239,6 +239,7 @@ body {
   cursor: pointer;
   z-index: 10;
 }
+
 .invisible-power-btn:hover {
   background: rgba(255, 255, 255, 0.2);
 }
@@ -1731,7 +1732,10 @@ body {
   }
 
   /* --- scroll-margin-top para el header compacto --- */
-  .main-content, .about-section, .tech-section, .contact-section {
+  .main-content,
+  .about-section,
+  .tech-section,
+  .contact-section {
     scroll-margin-top: 80px;
   }
 }
@@ -2371,7 +2375,7 @@ body {
   transform: translateY(-50%);
   background: linear-gradient(90deg, #0a0604 0%, #2b1d12 50%, #0a0604 100%);
   z-index: 0;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .spool {
@@ -2391,7 +2395,8 @@ body {
 }
 
 .cassette-card:hover .spool {
-  animation-duration: 1.2s; /* Gira más rápido al hacer hover */
+  animation-duration: 1.2s;
+  /* Gira más rápido al hacer hover */
 }
 
 @keyframes spinSpool {
@@ -2413,8 +2418,8 @@ body {
   border-radius: 50%;
   z-index: -1;
   background-color: #2b1d12;
-  background-image: 
-    repeating-radial-gradient(circle at center, transparent 0, rgba(0,0,0,0.5) 1px, transparent 2px),
+  background-image:
+    repeating-radial-gradient(circle at center, transparent 0, rgba(0, 0, 0, 0.5) 1px, transparent 2px),
     conic-gradient(from 0deg, #120c07 0deg, #3a2517 45deg, #120c07 90deg, #3a2517 135deg, #120c07 180deg, #3a2517 225deg, #120c07 270deg, #3a2517 315deg, #120c07 360deg);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.9), inset 0 0 4px rgba(255, 255, 255, 0.3);
 }
@@ -2428,6 +2433,7 @@ body {
   width: 52px;
   height: 52px;
 }
+
 .spool::after {
   content: '';
   position: absolute;
@@ -2457,7 +2463,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 3px 6px;
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .tape-window::before {
@@ -2475,8 +2481,17 @@ body {
 }
 
 @keyframes blinkTapeLed {
-  0%, 100% { opacity: 0.2; box-shadow: 0 0 4px 1px rgba(255, 59, 48, 0.4); }
-  50% { opacity: 1; box-shadow: 0 0 10px 3px rgba(255, 59, 48, 0.9); }
+
+  0%,
+  100% {
+    opacity: 0.2;
+    box-shadow: 0 0 4px 1px rgba(255, 59, 48, 0.4);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px 3px rgba(255, 59, 48, 0.9);
+  }
 }
 
 .tape-roll {
@@ -2493,12 +2508,18 @@ body {
 }
 
 .cassette-card:hover .tape-roll {
-  animation-duration: 0.6s; /* Cinta se mueve más rápido al hacer hover */
+  animation-duration: 0.6s;
+  /* Cinta se mueve más rápido al hacer hover */
 }
 
 @keyframes moveTape {
-  0% { background-position: 0 0; }
-  100% { background-position: 44px 0; }
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 44px 0;
+  }
 }
 
 .tape-ruler {
@@ -2509,7 +2530,7 @@ body {
   color: #74a88d;
   line-height: 1;
   padding: 0 5px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .cassette-tabs {
@@ -4049,7 +4070,7 @@ body {
 
 .contact-card {
   background-color: #eedfb5;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   background-size: 4px 4px;
@@ -4058,7 +4079,7 @@ body {
   min-width: 320px;
   max-width: 420px;
   min-height: 480px;
-  box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -4073,14 +4094,14 @@ body {
   width: 12px;
   height: 25px;
   background-color: #d4c4a8;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
   background-size: 4px 4px;
   border: 2px solid #000;
   border-right: none;
   z-index: -1;
-  box-shadow: -2px 2px 0px rgba(0,0,0,0.2);
+  box-shadow: -2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .contact-titlebar {
@@ -4093,20 +4114,36 @@ body {
   font-family: 'VT323', monospace;
   font-size: 1.4rem;
   letter-spacing: 1px;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
   background-size: 4px 4px;
 }
 
-.github-contact .contact-titlebar { background-color: #3b2b4e; }
-.email-contact .contact-titlebar { background-color: #b84742; }
-.linkedin-contact .contact-titlebar { background-color: #1a68a5; }
+.github-contact .contact-titlebar {
+  background-color: #3b2b4e;
+}
+
+.email-contact .contact-titlebar {
+  background-color: #b84742;
+}
+
+.linkedin-contact .contact-titlebar {
+  background-color: #1a68a5;
+}
 
 /* Colores para las pestañas (tabs) */
-.github-contact::before { background-color: #aa9ec2; }
-.email-contact::before { background-color: #e2a8a5; }
-.linkedin-contact::before { background-color: #a4c9e8; }
+.github-contact::before {
+  background-color: #aa9ec2;
+}
+
+.email-contact::before {
+  background-color: #e2a8a5;
+}
+
+.linkedin-contact::before {
+  background-color: #a4c9e8;
+}
 
 .contact-close-btn {
   background-color: #eedfb5;
@@ -4124,6 +4161,7 @@ body {
   padding: 0;
   box-shadow: 1px 1px 0px #000;
 }
+
 .contact-close-btn:active {
   box-shadow: inset 1px 1px 0px #000;
 }
@@ -4155,7 +4193,7 @@ body {
 .pixel-envelope {
   font-size: 8rem;
   line-height: 1;
-  text-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 .contact-text {
@@ -4166,18 +4204,39 @@ body {
   display: flex;
   align-items: center;
 }
-.github-contact .contact-text { color: #000; font-weight: bold; }
-.email-contact .contact-text { color: #b84742; font-weight: bold; }
-.linkedin-contact .contact-text { color: #1a68a5; font-weight: bold; }
+
+.github-contact .contact-text {
+  color: #000;
+  font-weight: bold;
+}
+
+.email-contact .contact-text {
+  color: #b84742;
+  font-weight: bold;
+}
+
+.linkedin-contact .contact-text {
+  color: #1a68a5;
+  font-weight: bold;
+}
 
 .contact-divider {
   width: 100%;
   border-top: 2px dotted #000;
   margin: 10px 0 20px 0;
 }
-.github-contact .contact-divider { border-top: 2px dotted #3b2b4e; }
-.email-contact .contact-divider { border-top: 2px dotted #b84742; }
-.linkedin-contact .contact-divider { border-top: 2px dotted #1a68a5; }
+
+.github-contact .contact-divider {
+  border-top: 2px dotted #3b2b4e;
+}
+
+.email-contact .contact-divider {
+  border-top: 2px dotted #b84742;
+}
+
+.linkedin-contact .contact-divider {
+  border-top: 2px dotted #1a68a5;
+}
 
 .contact-btn {
   background-color: #eedfb5;
@@ -4236,12 +4295,13 @@ body {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 20px;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr !important;
   }
 
-  .tech-section, .projects-section {
+  .tech-section,
+  .projects-section {
     padding: 40px 16px !important;
   }
 
@@ -4249,7 +4309,9 @@ body {
     font-size: 3rem !important;
   }
 
-  .floppy-card, .cassette-card, .cartridge-card {
+  .floppy-card,
+  .cassette-card,
+  .cartridge-card {
     width: 100% !important;
     min-width: auto !important;
   }
@@ -4514,7 +4576,11 @@ body {
 
 /* Scroll Offset Fix — Desktop */
 @media (min-width: 769px) {
-  .main-content, .about-section, .tech-section, .contact-section {
+
+  .main-content,
+  .about-section,
+  .tech-section,
+  .contact-section {
     scroll-margin-top: 130px;
   }
-}
+}
