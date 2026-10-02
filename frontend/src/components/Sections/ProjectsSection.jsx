@@ -164,7 +164,7 @@ const ProjectsSection = () => {
                     </button>
                     <button
                       className="arcade-btn secondary-btn"
-                      onClick={() => window.open('https://github.com/Luis-dsc33', '_blank')}
+                      onClick={() => window.open(activeProject.repoLink || 'https://github.com/Luis-dsc33', '_blank')}
                     >
                       {t('proj_btn_code')}
                     </button>
