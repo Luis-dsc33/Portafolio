@@ -12,23 +12,23 @@ const useScrollReveal = () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    
-                    
+
+
                 } else {
-                    
+
                     entry.target.classList.remove('active');
                 }
             });
         }, observerOptions);
 
-        
+
         const revealElements = document.querySelectorAll('.reveal');
         revealElements.forEach(el => observer.observe(el));
 
         return () => {
             revealElements.forEach(el => observer.unobserve(el));
         };
-    }, []); 
+    }, []);
 };
 
 export default useScrollReveal;

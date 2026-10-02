@@ -80,7 +80,7 @@ const AboutSection = () => {
                 </div>
             </div>
             <Timeline />
-            
+
         </section>
     );
 };

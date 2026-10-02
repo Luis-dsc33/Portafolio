@@ -121,7 +121,7 @@ const ProjectsSection = () => {
 
                   <div className="details-body">
                     <div className="project-preview">
-                      <img src={activeProject.image} alt={`Vista previa de ${activeProject.title}`} />
+                      <img src={activeProject.image} alt={`Vista previa de ${activeProject.title}`} loading="lazy" />
                     </div>
 
                     <p className="project-desc">{activeProject.desc}</p>

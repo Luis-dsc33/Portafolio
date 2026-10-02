@@ -17,19 +17,57 @@ import ProjectDetails from './components/Sections/ProjectDetails';
 import useScrollReveal from './hooks/useScrollReveal';
 import { useLanguage } from './context/LanguageContext';
 
+const Home = ({ scrollToSection, activeFilter, setActiveFilter, projectsData, t }) => {
+  useScrollReveal();
+
+  return (
+    <>
+      <TopBar scrollToSection={scrollToSection} />
+      <HeroProfile scrollToSection={scrollToSection} />
+      <AboutSection />
+
+      <div className="retro-separator-container separator-projects reveal">
+        <hr className="retro-separator" />
+        <span className="separator-text">{t('sep_projects')}</span>
+      </div>
+
+      <ProjectsExplorer
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
+        projectsData={projectsData}
+      />
+
+      <div className="retro-separator-container separator-tech reveal">
+        <hr className="retro-separator" />
+        <span className="separator-text">{t('sep_tech')}</span>
+      </div>
+
+      <TechSection />
+
+      <div className="retro-separator-container separator-tech reveal">
+        <hr className="retro-separator" />
+        <span className="separator-text">{t('sep_contact')}</span>
+      </div>
+
+      <ContactSection />
+      <DesktopEnvironment />
+    </>
+  );
+};
+
 function App() {
   const { t } = useLanguage();
-  
+
   const [hasStarted, setHasStarted] = useState(() => sessionStorage.getItem('booted') === 'true');
   const [step, setStep] = useState(() => sessionStorage.getItem('booted') === 'true' ? 9 : -1);
   const [isExpanding, setIsExpanding] = useState(() => sessionStorage.getItem('booted') === 'true');
   const [showPortfolio, setShowPortfolio] = useState(() => sessionStorage.getItem('booted') === 'true');
 
-  
+
   const [activeFilter, setActiveFilter] = useState('Todos');
 
-  
-  const projectsData = [
+
+  const projectsData = React.useMemo(() => [
     {
       id: 'inventory', name: 'Inventory_360.exe', category: 'Web', icon: '⚙️',
       title: 'Inventory 360', type: 'SaaS',
@@ -59,23 +97,23 @@ function App() {
       img: '/proyects/cashflow/cashflow_preview.jpg',
       tech: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'Gemini AI']
     },
-  ];
+  ], [t]);
 
-  
+
   const handlePowerOn = (e) => {
     if (e) e.stopPropagation();
     if (hasStarted) return;
     setHasStarted(true);
   };
 
-  
+
   useEffect(() => {
     if (showPortfolio) return;
 
     const handleSkip = (e) => {
-      
-      
-      
+
+
+
       if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
 
       setHasStarted(true);
@@ -129,46 +167,7 @@ function App() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const Home = () => {
-    useScrollReveal();
 
-    return (
-      <>
-        <TopBar scrollToSection={scrollToSection} />
-
-        <HeroProfile scrollToSection={scrollToSection} />
-
-        <AboutSection />
-
-        <div className="retro-separator-container separator-projects reveal">
-          <hr className="retro-separator" />
-          <span className="separator-text">{t('sep_projects')}</span>
-        </div>
-
-        <ProjectsExplorer
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
-          projectsData={projectsData}
-        />
-
-        <div className="retro-separator-container separator-tech reveal">
-          <hr className="retro-separator" />
-          <span className="separator-text">{t('sep_tech')}</span>
-        </div>
-
-        <TechSection />
-
-        <div className="retro-separator-container separator-tech reveal">
-          <hr className="retro-separator" />
-          <span className="separator-text">{t('sep_contact')}</span>
-        </div>
-
-        <ContactSection />
-
-        <DesktopEnvironment />
-      </>
-    );
-  };
 
   return (
     <BrowserRouter>
@@ -186,7 +185,7 @@ function App() {
                   <div className="portfolio-wrapper fade-in-portfolio" id="portfolio-scroll-container">
 
                     <Routes>
-                      <Route path="/" element={<Home />} />
+                      <Route path="/" element={<Home scrollToSection={scrollToSection} activeFilter={activeFilter} setActiveFilter={setActiveFilter} projectsData={projectsData} t={t} />} />
                       <Route path="/proyecto/:id" element={<ProjectDetails projectsData={projectsData} />} />
                     </Routes>
 

@@ -260,7 +260,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   z-index: 11;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   animation: bounceTooltip 1.5s infinite;
   pointer-events: none;
   text-align: center;
@@ -295,8 +295,15 @@ body {
 }
 
 @keyframes bounceTooltip {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -10px); }
+
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    transform: translate(-50%, -10px);
+  }
 }
 
 /* --- MONITOR RESPONSIVE MÓVIL --- */

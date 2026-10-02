@@ -1,9 +1,11 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 import RetroWindow from '../UI/RetroWindow';
-
+import { useLanguage } from '../../context/LanguageContext';
 
 function DesktopEnvironment() {
+  const { language, t } = useLanguage();
+
   return (
     <aside className="desk-section reveal">
       <Draggable handle=".title-bar">
@@ -16,7 +18,7 @@ function DesktopEnvironment() {
           >
             <div className="window-body fake-window-body">
               <div className="fake-content image-content">
-                <img src="/avion.jpg" alt="Avión clásico" />
+                <img src="/avion.jpg" alt="Avión clásico" loading="lazy" />
               </div>
               <div className="fake-scrollbar-vertical">
                 <button className="scroll-btn btn-up"></button>
@@ -37,30 +39,30 @@ function DesktopEnvironment() {
       <Draggable handle=".title-bar">
         <div>
           <RetroWindow
-            title="notas.txt - Bloc de notas"
+            title={t('notas_title')}
             titleBarColor="#000080"
             controls={['minimize', 'maximize', 'close']}
             className="window-notas"
             menuBar={
               <div className="menu-bar">
-                <span><u>A</u>rchivo</span>
-                <span><u>E</u>dición</span>
-                <span><u>B</u>úsqueda</span>
-                <span>A<u>y</u>uda</span>
+                <span><u>{t('notas_menu_file')[0]}</u>{t('notas_menu_file').slice(1)}</span>
+                <span><u>{t('notas_menu_edit')[0]}</u>{t('notas_menu_edit').slice(1)}</span>
+                <span><u>{t('notas_menu_search')[0]}</u>{t('notas_menu_search').slice(1)}</span>
+                <span>{language === 'es' ? <>A<u>y</u>uda</> : <><u>H</u>elp</>}</span>
               </div>
             }
           >
             <div className="window-body fake-window-body notas-body">
               <div className="fake-content text-content">
-                <p className="bold-text">Pendientes para hoy:</p>
+                <p className="bold-text">{t('notas_todo')}</p>
                 <ul className="todo-list">
-                  <li>- Revisar PRs</li>
-                  <li>- Corregir bugs</li>
-                  <li>- Commit rama &lt;testing&gt;</li>
-                  <li>- Leer documentación</li>
-                  <li>- Desplegar en Vercel</li>
-                  <li>- Alimentar a Memo 🐈</li>
-                  <li>- Comprar café</li>
+                  <li>{t('notas_t1')}</li>
+                  <li>{t('notas_t2')}</li>
+                  <li>{t('notas_t3')}</li>
+                  <li>{t('notas_t4')}</li>
+                  <li>{t('notas_t5')}</li>
+                  <li>{t('notas_t6')}</li>
+                  <li>{t('notas_t7')}</li>
                 </ul>
               </div>
               <div className="fake-scrollbar-vertical full-height">
@@ -74,7 +76,7 @@ function DesktopEnvironment() {
       </Draggable>
 
       <div className="desk-assets">
-        <img src="/escritorio.png" alt="Escritorio retro" />
+        <img src={language === 'en' ? "/escritorio_ingles.png" : "/escritorio.png"} alt="Escritorio retro" loading="lazy" />
       </div>
     </aside>
   );
