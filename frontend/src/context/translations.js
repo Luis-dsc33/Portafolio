@@ -145,6 +145,7 @@ export const translations = {
     notas_t5: "- Deploy to Vercel",
     notas_t6: "- Feed Memo 🐈",
     notas_t7: "- Buy coffee",
+    taskbar_thanks: "Thanks for watching",
   },
   es: {
 
@@ -292,5 +293,6 @@ export const translations = {
     notas_t5: "- Desplegar en Vercel",
     notas_t6: "- Alimentar a Memo 🐈",
     notas_t7: "- Comprar café",
+    taskbar_thanks: "Gracias por ver",
   }
 };

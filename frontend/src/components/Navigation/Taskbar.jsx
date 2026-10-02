@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Taskbar.css';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Taskbar = () => {
+    const { t, language } = useLanguage();
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -17,10 +19,10 @@ const Taskbar = () => {
             <div className="taskbar-left">
                 <button className="start-button">
                     <img src="/icons/logo.png" alt="Windows Logo" className="start-icon" />
-                    <span className="start-text">Inicio</span>
+                    <span className="start-text">{language === 'en' ? 'Start' : 'Inicio'}</span>
                 </button>
                 <div className="taskbar-divider"></div>
-                <span className="taskbar-text heart-text">❤️ Gracias por ver</span>
+                <span className="taskbar-text heart-text">{t('taskbar_thanks')}</span>
             </div>
             
             <div className="taskbar-right">
